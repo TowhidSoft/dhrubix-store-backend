@@ -1,0 +1,479 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  name            String?
+  photo           String?
+  email           String    @unique
+  phone           String?
+  password        String    @default("")
+  isEmailVerified Boolean   @default(false)
+  isDeleted       Boolean   @default(false)
+  lang            Lang      @default(ENG)
+  role            Role      @default(CUSTOMER)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  dob             DateTime?
+  fcmToken        String?   @default("")
+  isGoogleAuth    Boolean   @default(false)
+  lastLogin       DateTime?
+  lastSeen        DateTime? @default(now())
+
+  // Existing relations
+  profile Profile?
+  brand   Brand?   @relation(fields: [brandId], references: [id])
+  brandId String?  @db.ObjectId
+
+  wishlists Wishlist[]
+  orders    Order[]
+  reviews   Review[]
+  payments  Payment[]
+  Visitor   Visitor[]
+  Cart      Cart[]
+  Blog      Blog[]
+
+  @@map("users")
+}
+
+model Otp {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  verified  Boolean  @default(false)
+
+  @@map("otp")
+}
+
+model Profile {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @unique @db.ObjectId
+  intro      String?  @default("")
+  fullName   String?
+  bloodGroup String?
+  gender     Gender?
+  zip        String?
+  city       String?
+  state      String?
+  address    String?
+  country    String?
+  user       User     @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([createdAt])
+  @@map("profile")
+}
+
+model subscriber {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+
+  createdAt DateTime @default(now())
+
+  @@map("subscribers")
+}
+
+// Enums
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+enum Lang {
+  ENG
+  ARB
+}
+
+enum Gender {
+  Male
+  Female
+  Others
+}
+
+model Visitor {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  sessionId String  @unique
+  userId    String? @db.ObjectId
+  user      User?   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("visitors")
+}
+
+model Brand {
+  id   String  @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  des  String?
+  img  String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  users     User[]
+  products  Product[]
+
+  @@map("brands")
+}
+
+model Category {
+  id   String  @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  des  String?
+  img  String?
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  products    Product[]
+  Subcategory Subcategory[]
+
+  @@map("categories")
+}
+
+model Subcategory {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  categoryId String  @db.ObjectId
+  name       String
+  des        String?
+  img        String?
+
+  category  Category  @relation(fields: [categoryId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  products  Product[]
+
+  @@map("subcategories")
+}
+
+model Size {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  products  Product[]
+
+  @@map("size")
+}
+
+model Color {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  products  Product[]
+
+  @@map("color")
+}
+
+model Product {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  sku             String   @unique
+  shortDes        String?
+  des             String?
+  specification   String?
+  images          String[]
+  videos          String[]
+  videoUrls       String[] // external video links (YouTube etc.) — combined with `videos`, max 3 total
+  sizeId          String?  @db.ObjectId
+  colorId         String?  @db.ObjectId
+  categoryId      String?  @db.ObjectId
+  subcategoryId   String?  @db.ObjectId
+  brandId         String?  @db.ObjectId
+  tag             String?
+  price           String
+  discount        Boolean  @default(false)
+  discountPercent String   @default("0")
+  shippingFee     String   @default("0")
+  stock           Boolean  @default(true)
+  quantity        String
+
+  category    Category?    @relation(fields: [categoryId], references: [id])
+  Subcategory Subcategory? @relation(fields: [subcategoryId], references: [id])
+  brand       Brand?       @relation(fields: [brandId], references: [id])
+
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  wishlists     Wishlist[]
+  orderProducts OrderProduct[]
+  reviews       Review[]
+  Size          Size?          @relation(fields: [sizeId], references: [id])
+  Color         Color?         @relation(fields: [colorId], references: [id])
+  Cart          Cart[]
+
+  @@map("products")
+}
+
+model Cart {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  productId String  @db.ObjectId
+  userId    String  @db.ObjectId
+  quantity  String  @default("1")
+  user      User    @relation(fields: [userId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("carts")
+}
+
+model Wishlist {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  productId String @db.ObjectId
+  userId    String @db.ObjectId
+
+  user      User     @relation(fields: [userId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("wishlists")
+}
+
+enum Currency {
+  BDT
+  USD
+}
+
+model Payment {
+  id         String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String        @db.ObjectId
+  orderId    String        @db.ObjectId
+  order      Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  name       String?
+  amount     Float
+  paidAmount Float?        @default(0)
+  currency   Currency      @default(BDT)
+  status     PaymentStatus @default(PENDING)
+  method     PaymentMethod @default(COD)
+  metadata   Json?
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([orderId])
+  @@index([userId])
+  @@map("payments")
+}
+
+// Update Order model
+model Order {
+  id      String      @id @default(auto()) @map("_id") @db.ObjectId
+  orderNo String      @unique
+  status  OrderStatus @default(PENDING)
+
+  // User relation
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.ObjectId
+
+  orderProducts OrderProduct[]
+
+  // Customer details
+  name    String
+  email   String
+  phone   String
+  address String
+  city    String?
+  state   String?
+  country String?
+  zipCode String?
+
+  amount        Float
+  shippingFee   Float
+  currency      Currency
+  paymentMethod PaymentMethod
+
+  // Payment info
+  payments Payment[]
+
+  // Shipping info
+  trackingNumber    String?
+  estimatedDelivery DateTime?
+  shippingCarrier   String? // e.g. "BLUEDART", shown as "Shipping BY" in tracking UI
+
+  // Invoice — generated once status hits DELIVERED, downloadable + emailed
+  invoiceUrl String?
+
+  // Full audit trail of every status change, in order, with timestamps.
+  // Drives the "Order confirmed / Picked by courier / On the way / Delivered"
+  // tracker UI on the frontend with real dates instead of guessed ones.
+  statusHistory OrderStatusLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  reviews   Review[]
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+// Embedded (MongoDB composite) type — one entry per status transition
+type OrderStatusLog {
+  status    OrderStatus
+  changedAt DateTime @default(now())
+}
+
+// Add indexes for better query performance
+model OrderProduct {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  orderId    String   @db.ObjectId
+  productId  String   @db.ObjectId
+  quantity   Int      @default(1)
+  price      Float // Price at time of purchase
+  isReviewed Boolean  @default(false)
+  order      Order    @relation(fields: [orderId], references: [id])
+  product    Product? @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+// Update PaymentMethod enum
+enum PaymentMethod {
+  SSL_COMMERZ
+  COD
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  CANCELLED
+}
+
+enum OrderStatus {
+  PENDING
+  ACCEPTED
+  DISPATCHED
+  DELIVERED
+  CANCELLED
+}
+
+model Review {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  rating     Int
+  des        String  @default("")
+  isApproved Boolean @default(false)
+
+  userId    String @db.ObjectId
+  orderId   String @db.ObjectId
+  productId String @db.ObjectId
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model socials {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  pinterest String @default("")
+  linkedin  String @default("")
+  instagram String @default("")
+  facebook  String @default("")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("socials")
+}
+
+// ========== CMS/Profile Management ==========
+
+model hero {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  title    String? @default("")
+  subTitle String? @default("")
+  intro    String? @default("")
+  image    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("hero")
+}
+
+model SiteSettings {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  logo           String?
+  favicon        String?
+  phones         String[] @default([])
+  emails         String[] @default([])
+  address        String?  @default("")
+  workingHours   String?  @default("")
+  mapEmbedUrl    String?  @default("")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+model OurStory {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  title    String? @default("")
+  subTitle String? @default("")
+  image    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("our_story")
+}
+
+model Blog {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  subTitle String?  @default("")
+  des      String
+  images   String[]
+  active   Boolean  @default(true)
+  views    Int      @default(0)
+
+  adminId   String   @db.ObjectId
+  admin     User     @relation(fields: [adminId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blogs")
+}
+
+// ========== Slider Management ==========
+
+enum SliderType {
+  PRODUCT
+  CATEGORY
+  BRAND
+}
+
+model Slider {
+  id    String     @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  type  SliderType
+
+  // Optional relation IDs (one will be set based on type)
+  productIds String[] @db.ObjectId
+  categoryId String?  @db.ObjectId
+  brandId    String?  @db.ObjectId
+
+  image     String?
+  active    Boolean @default(true)
+  sortOrder Int     @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sliders")
+}

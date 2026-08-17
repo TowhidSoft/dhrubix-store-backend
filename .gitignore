@@ -1,0 +1,33 @@
+# Node.js dependencies
+node_modules/
+uploads/
+# Build output
+build/
+.out/
+dist/
+# Prisma generated client
+/generated/
+prisma/generated/
+
+# Local env files
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Misc
+*.tsbuildinfo

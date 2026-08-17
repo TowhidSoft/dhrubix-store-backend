@@ -1,0 +1,502 @@
+baseUrl/localUrl = http://localhost:4200/api/v1
+
+Authentication:
+    req.headers:
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNDkxMzhlZGZjZGZkMWVkNzNlMzBlNCIsImVtYWlsIjoi...
+
+
+CATEGORY Api's =================
+    1. For ADMIN Only
+        POST {{localURL}}/category/
+            Authentication
+            req.body[form-data]: {
+                name: "String"
+                des: "String (optional)"
+                image: File
+            }
+            response: {
+                "status": true,
+                "message": "New category added in the list",
+                "data": {
+                    "id": "6a4d126c714130d84d528d90",
+                    "name": "Category 1",
+                    "des": "Hello",
+                    "img": "http://localhost:4200/uploads/img-1783435884411-204102262.png",
+                    "createdAt": "2026-07-07T14:51:24.590Z",
+                    "updatedAt": "2026-07-07T14:51:24.590Z"
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "Category with this name already exist.",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Category with this name already exist."
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "Category with this name already exist.",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Category with this name already exist."
+                    }
+                ]
+            }
+            
+    2.  GET {{localURL}}/category
+            response: {
+                status": true,
+                "message": "Category List Found",
+                "data": {
+                    "total": 11,
+                    "category": [
+                        "{
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo",
+                            "des": "Hi",
+                            "img": "http://localhost:4200/uploads/img-1783262304513-322688558.png",
+                            "Subcategory": [
+                                {
+                                    "id": "6a4a6a2bdfe6e7a891d1527d",
+                                    "name": "Sub Combo",
+                                    "img": "http://localhost:4200/uploads/img-1783262304513-322688558.png",
+                                }
+                            ]
+                        },
+                        {
+                            "id": "6a4a6a7cdfe6e7a891d1527d",
+                            "name": "Lifestyle",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783261820092-803584872.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4a6a98dfe6e7a891d1527e",
+                            "name": "Headphones",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783261848243-826987902.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4a6abfdfe6e7a891d1527f",
+                            "name": "Charger",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783261887430-108664039.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4a6adedfe6e7a891d15280",
+                            "name": "Speaker",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783261918019-901592038.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4a6afcdfe6e7a891d15281",
+                            "name": "Cable",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783261948485-532278950.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4a6b1bdfe6e7a891d15282",
+                            "name": "Powerbank",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783261979525-408133629.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4a6b3fdfe6e7a891d15283",
+                            "name": "Smartwatch",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783262015413-459940503.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4a6cb5c2004be6986dfbe6",
+                            "name": "Hubs & Docks",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783262388954-239186624.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4d126c714130d84d528d90",
+                            "name": "Category 1",
+                            "des": "Hello",
+                            "img": "http://localhost:4200/uploads/img-1783435884411-204102262.png",
+                            "Subcategory": []
+                        },
+                        {
+                            "id": "6a4d1298714130d84d528d91",
+                            "name": "Category 2",
+                            "des": "Hello",
+                            "img": "",
+                            "Subcategory": []
+                        }
+                    ]
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "No category is available",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No category is available"
+                    }
+                ]
+            }
+
+    3.  GET {{localURL}}/category/:id
+            response: {
+                "status": true,
+                "message": "Category Found",
+                "data": {
+                    "id": "6a4a6a2bdfe6e7a891d1527c",
+                    "name": "Combo",
+                    "des": "Hi",
+                    "img": "http://localhost:4200/uploads/img-1783262304513-322688558.png",
+                    "createdAt": "2026-07-05T14:28:59.881Z",
+                    "updatedAt": "2026-07-06T12:55:03.645Z"
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "Category Id is required!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Category Id is required!"
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "No category found with this id",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No category found with this id"
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        PATCH {{localURL}}/category/:id
+            Authentication
+            req.body[form-data]: {
+                name: "String"
+                des: "String (optional)"
+                image: File
+            }
+            response: {
+                "status": true,
+                "message": "Category updated successfully!",
+                "data": {
+                    "id": "6a4a6a2bdfe6e7a891d1527c",
+                    "name": "Combo",
+                    "des": "Hi",
+                    "img": "http://localhost:4200/uploads/img-1783262304513-322688558.png",
+                    "createdAt": "2026-07-05T14:28:59.881Z",
+                    "updatedAt": "2026-07-07T15:03:05.070Z"
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "Category not found!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Category not found!"
+                    }
+                ]
+            }
+    
+    5. For ADMIN Only
+        DELETE {{localURL}}/category/:id
+            Authentication
+            req.body[form-data]: {
+                name: "String"
+                des: "String (optional)"
+                image: File
+            }
+            response: {
+                "status": true,
+                "message": "Category deleted success.",
+                "data": {
+                    "id": "6a4d1298714130d84d528d91",
+                    "name": "Category 2",
+                    "des": "Hello",
+                    "img": null,
+                    "createdAt": "2026-07-07T14:52:08.037Z",
+                    "updatedAt": "2026-07-07T14:52:08.037Z"
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "Category not found!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Category not found!"
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "Cannot delete category with existing products.",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Cannot delete category with existing products."
+                    }
+                ]
+            }
+
+
+SUBCATEGORY Api's =================
+    1. For ADMIN Only
+        POST {{localURL}}/subcategory/
+            Authentication
+            req.body[form-data]: {
+                categoryId: "String"
+                name: "String"
+                des: "String (optional)"
+                image: File
+            }
+            response: {
+                "status": true,
+                "message": "New subcategory added in the list",
+                "data": {
+                    "id": "6a4d17d3e46a05bfe8fdcbfd",
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                    "name": "Bold Wines",
+                    "des": "description of bold wines",
+                    "img": "",
+                    "createdAt": "2026-07-07T15:14:27.436Z",
+                    "updatedAt": "2026-07-07T15:14:27.436Z"
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "Subcategory already exist",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Subcategory already exist"
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "Category not found",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Category not found"
+                    }
+                ]
+            }
+            
+    2.  GET {{localURL}}/subcategory
+            response: {
+                "status": true,
+                "message": "SubCategory List Found",
+                "data": {
+                    "total": 1,
+                    "subCategory": [
+                        {
+                            "id": "6a4d17d3e46a05bfe8fdcbfd",
+                            "name": "Bold Wines",
+                            "des": "description of bold wines",
+                            "img": "",
+                            "category": {
+                                "id": "6a4a6a2bdfe6e7a891d1527c",
+                                "name": "Combo",
+                                "des": "Hi",
+                                "img": "img-1783262304513-322688558.png",
+                                "createdAt": "2026-07-05T14:28:59.881Z",
+                                "updatedAt": "2026-07-07T15:03:05.070Z"
+                            }
+                        }
+                    ]
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "No subcategory found",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No subcategory found"
+                    }
+                ]
+            }
+
+    3.  GET {{localURL}}/subcategory/category/:id
+            response: {
+                "status": true,
+                "message": "Category Wise SubCategory List Found",
+                "data": {
+                    "total": 1,
+                    "subCategory": [
+                        {
+                            "id": "6a4d17d3e46a05bfe8fdcbfd",
+                            "name": "Bold Wines",
+                            "img": ""
+                        }
+                    ]
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "Category not found",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Category not found"
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "No subcategory found for this category",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No subcategory found for this category"
+                    }
+                ]
+            }
+
+    4.  GET {{localURL}}/subcategory/:id
+            response: {
+                "status": true,
+                "message": "SubCategory Found",
+                "data": {
+                    "id": "6a4d17d3e46a05bfe8fdcbfd",
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                    "name": "Bold Wines",
+                    "des": "description of bold wines",
+                    "img": "",
+                    "createdAt": "2026-07-07T15:14:27.436Z",
+                    "updatedAt": "2026-07-07T15:14:27.436Z",
+                    "category": {
+                        "id": "6a4a6a2bdfe6e7a891d1527c",
+                        "name": "Combo",
+                        "des": "Hi",
+                        "img": "img-1783262304513-322688558.png",
+                        "createdAt": "2026-07-05T14:28:59.881Z",
+                        "updatedAt": "2026-07-07T15:03:05.070Z"
+                    }
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "Subcategory Id is required!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Subcategory Id is required!"
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "No subcategory found with this id",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No subcategory found with this id"
+                    }
+                ]
+            }
+
+    5. For ADMIN Only
+        PATCH {{localURL}}/subcategory/:id
+            Authentication
+            req.body[form-data]: {
+                name: "String"
+                des: "String (optional)"
+                image: File
+            }
+            response: {
+                "status": true,
+                "message": "SubCategory updated successfully!",
+                "data": {
+                    "update": {
+                        "id": "6a4d17d3e46a05bfe8fdcbfd",
+                        "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                        "name": "Heklkl",
+                        "des": "faasd",
+                        "img": "",
+                        "createdAt": "2026-07-07T15:14:27.436Z",
+                        "updatedAt": "2026-07-07T15:38:18.989Z"
+                    }
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "SubCategory not found!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "SubCategory not found!"
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "Subcategory with this name already exist",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Subcategory with this name already exist"
+                    }
+                ]
+            }
+    
+    5. For ADMIN Only
+        DELETE {{localURL}}/subcategory/:id
+            Authentication
+            req.body[form-data]: {
+                name: "String"
+                des: "String (optional)"
+                image: File
+            }
+            response: {
+                "status": true,
+                "message": "Category deleted success.",
+                "data": {
+                    "id": "6a4d1298714130d84d528d91",
+                    "name": "Category 2",
+                    "des": "Hello",
+                    "img": null,
+                    "createdAt": "2026-07-07T14:52:08.037Z",
+                    "updatedAt": "2026-07-07T14:52:08.037Z"
+                }
+            }
+            Error response: {
+                "status": false,
+                "message": "No category found with this id",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No category found with this id"
+                    }
+                ]
+            }
+            Error response: {
+                "status": false,
+                "message": "Cannot delete subcategory with existing products.",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Cannot delete subcategory with existing products."
+                    }
+                ]
+            }

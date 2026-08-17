@@ -1,0 +1,2707 @@
+baseUrl/localUrl = http://localhost:4200/api/v1
+
+Authentication:
+    req.headers:
+            token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNDkxMzhlZGZjZGZkMWVkNzNlMzBlNCIsImVtYWlsIjoi...
+
+
+BRAND Api's =================
+
+    1. For ADMIN Only
+        POST {{localURL}}/brand
+            Authentication
+            req.body[form-data]: {
+                name: "String"
+                des: "String (optional)"
+                img: File
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "New brand added in the list",
+                "data": {
+                    "id": "6a4d1b7de46a05bfe8fdcc01",
+                    "name": "Sony",
+                    "des": "Electronics brand",
+                    "img": "http://localhost:4200/uploads/img-1783437884411-204102262.png",
+                    "createdAt": "2026-07-07T15:20:00.000Z",
+                    "updatedAt": "2026-07-07T15:20:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "Brand Image is required!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Brand Image is required!"
+                    }
+                ]
+            }
+
+    2. GET {{localURL}}/brand
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Brand List Found",
+                "data": {
+                    "total": 1,
+                    "brand": [
+                        {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony",
+                            "des": "Electronics brand",
+                            "img": "http://localhost:4200/uploads/img-1783437884411-204102262.png"
+                        }
+                    ]
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "No brand is available",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No brand is available"
+                    }
+                ]
+            }
+
+    3. GET {{localURL}}/brand/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Brand Found",
+                "data": {
+                    "id": "6a4d1b7de46a05bfe8fdcc01",
+                    "name": "Sony",
+                    "des": "Electronics brand",
+                    "img": "http://localhost:4200/uploads/img-1783437884411-204102262.png",
+                    "createdAt": "2026-07-07T15:20:00.000Z",
+                    "updatedAt": "2026-07-07T15:20:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "No brand found with this id",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No brand found with this id"
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        PATCH {{localURL}}/brand/:id
+            Authentication
+            req.body[form-data]: {
+                name: "String (optional)"
+                des: "String (optional)"
+                img: File (optional)
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Brand updated successfully!",
+                "data": {
+                    "id": "6a4d1b7de46a05bfe8fdcc01",
+                    "name": "Sony Updated",
+                    "des": "Updated brand description",
+                    "img": "http://localhost:4200/uploads/img-1783437999999-204102262.png",
+                    "createdAt": "2026-07-07T15:20:00.000Z",
+                    "updatedAt": "2026-07-07T15:30:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "Brand not found!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Brand not found!"
+                    }
+                ]
+            }
+
+    5. For ADMIN Only
+        DELETE {{localURL}}/brand/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Brand deleted success.",
+                "data": {
+                    "id": "6a4d1b7de46a05bfe8fdcc01",
+                    "name": "Sony Updated",
+                    "des": "Updated brand description",
+                    "img": "img-1783437999999-204102262.png",
+                    "createdAt": "2026-07-07T15:20:00.000Z",
+                    "updatedAt": "2026-07-07T15:30:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "Cannot delete brand with existing products.",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Cannot delete brand with existing products."
+                    }
+                ]
+            }
+
+
+SIZE Api's =================
+
+    1. For ADMIN Only
+        POST {{localURL}}/size
+            Authentication
+            req.body: {
+                "name": "XL"
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "New size added.",
+                "data": {
+                    "id": "6a4d1c1fe46a05bfe8fdcc02",
+                    "name": "XL",
+                    "createdAt": "2026-07-07T15:25:00.000Z",
+                    "updatedAt": "2026-07-07T15:25:00.000Z"
+                }
+            }
+
+    2. GET {{localURL}}/size
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Size List Found",
+                "data": {
+                    "total": 1,
+                    "sizes": [
+                        {
+                            "id": "6a4d1c1fe46a05bfe8fdcc02",
+                            "name": "XL"
+                        }
+                    ]
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "No size is available",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No size is available"
+                    }
+                ]
+            }
+
+    3. GET {{localURL}}/size/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Size Found",
+                "data": {
+                    "id": "6a4d1c1fe46a05bfe8fdcc02",
+                    "name": "XL"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "No size found with this id",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No size found with this id"
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        PATCH {{localURL}}/size/:id
+            Authentication
+            req.body: {
+                "name": "XXL"
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Size updated successfully!",
+                "data": {
+                    "id": "6a4d1c1fe46a05bfe8fdcc02",
+                    "name": "XXL"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "Size not found!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Size not found!"
+                    }
+                ]
+            }
+
+    5. For ADMIN Only
+        DELETE {{localURL}}/size/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Size deleted success.",
+                "data": {
+                    "id": "6a4d1c1fe46a05bfe8fdcc02",
+                    "name": "XXL",
+                    "createdAt": "2026-07-07T15:25:00.000Z",
+                    "updatedAt": "2026-07-07T15:25:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "Cannot delete size with existing products.",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Cannot delete size with existing products."
+                    }
+                ]
+            }
+
+
+COLOR Api's =================
+
+    1. For ADMIN Only
+        POST {{localURL}}/color
+            Authentication
+            req.body: {
+                "name": "Red"
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "New color added.",
+                "data": {
+                    "id": "6a4d1c8fe46a05bfe8fdcc03",
+                    "name": "Red",
+                    "createdAt": "2026-07-07T15:28:00.000Z",
+                    "updatedAt": "2026-07-07T15:28:00.000Z"
+                }
+            }
+
+    2. GET {{localURL}}/color
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Color List Found",
+                "data": {
+                    "total": 1,
+                    "colors": [
+                        {
+                            "id": "6a4d1c8fe46a05bfe8fdcc03",
+                            "name": "Red"
+                        }
+                    ]
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "No color is available",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No color is available"
+                    }
+                ]
+            }
+
+    3. GET {{localURL}}/color/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Color Found",
+                "data": {
+                    "id": "6a4d1c8fe46a05bfe8fdcc03",
+                    "name": "Red",
+                    "createdAt": "2026-07-07T15:28:00.000Z",
+                    "updatedAt": "2026-07-07T15:28:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "No color found with this id",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "No color found with this id"
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        PATCH {{localURL}}/color/:id
+            Authentication
+            req.body: {
+                "name": "Blue"
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Color updated successfully!",
+                "data": {
+                    "id": "6a4d1c8fe46a05bfe8fdcc03",
+                    "name": "Blue"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "color not found!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "color not found!"
+                    }
+                ]
+            }
+
+    5. For ADMIN Only
+        DELETE {{localURL}}/color/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Color deleted success.",
+                "data": {
+                    "id": "6a4d1c8fe46a05bfe8fdcc03",
+                    "name": "Blue",
+                    "createdAt": "2026-07-07T15:28:00.000Z",
+                    "updatedAt": "2026-07-07T15:28:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "Cannot delete color with existing products.",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "Cannot delete color with existing products."
+                    }
+                ]
+            }
+
+
+PRODUCT Api's =================
+
+    1. For ADMIN Only
+        POST {{localURL}}/product
+            Authentication
+            req.body[form-data]: {
+                data: {   
+                    "name": "Wireless Headphone X",
+                    "shortDes": "Awesome sounding headphones.",
+                    "des": "Detailed features description here.",
+                    "specification": "Bluetooth 5.0, 40h Battery",
+                    "sizeId": "6a4d1c1fe46a05bfe8fdcc02", // optional
+                    "colorId": "6a4d1c8fe46a05bfe8fdcc03", // optional
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                    "subCategoryId": "6a4d17d3e46a05bfe8fdcbfd", // optional
+                    "brandId": "6a4d1b7de46a05bfe8fdcc01",
+                    "tag": "trending", // optional
+                    "price": "2500",
+                    "shippingFee": "60", // optional
+                    "discount": true, // optional
+                    "discountPercent": "15", // optional
+                    "stock": true,
+                    "quantity": "120",
+                },
+                images: [File_1, File_2] // Multiple files up to 20
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "New product added!",
+                "data": {
+                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                    "name": "Wireless Headphone X",
+                    "sku": "SKU-NB-78249",
+                    "shortDes": "Awesome sounding headphones.",
+                    "des": "Detailed features description here.",
+                    "specification": "Bluetooth 5.0, 40h Battery",
+                    "images": [
+                        "http://localhost:4200/uploads/images-1783438680000.png",
+                        "http://localhost:4200/uploads/images-1783438680001.png"
+                    ],
+                    "sizeId": "6a4d1c1fe46a05bfe8fdcc02",
+                    "colorId": "6a4d1c8fe46a05bfe8fdcc03",
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                    "subcategoryId": "6a4d17d3e46a05bfe8fdcbfd",
+                    "brandId": "6a4d1b7de46a05bfe8fdcc01",
+                    "tag": "trending",
+                    "price": "2500",
+                    "discount": true,
+                    "discountPercent": "15",
+                    "shippingFee": "60",
+                    "stock": true,
+                    "quantity": "120",
+                    "createdAt": "2026-07-07T15:35:00.000Z",
+                    "updatedAt": "2026-07-07T15:35:00.000Z"
+                }
+            }
+
+    2. For ADMIN Only
+        PATCH {{localURL}}/product/:id
+            Authentication
+            req.body[form-data]: {
+                data: {   
+                    "name": "Wireless Headphone X", // optional
+                    "shortDes": "Awesome sounding headphones.", // optional
+                    "des": "Detailed features description here.", // optional
+                    "specification": "Bluetooth 5.0, 40h Battery", // optional
+                    "sizeId": "6a4d1c1fe46a05bfe8fdcc02", // optional
+                    "colorId": "6a4d1c8fe46a05bfe8fdcc03", // optional
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c", // optional
+                    "subCategoryId": "6a4d17d3e46a05bfe8fdcbfd", // optional
+                    "brandId": "6a4d1b7de46a05bfe8fdcc01", // optional
+                    "tag": "trending", // optional
+                    "price": "2500", // optional
+                    "shippingFee": "60", // optional
+                    "discount": true, // optional
+                    "discountPercent": "15", // optional
+                    "stock": true, // optional
+                    "quantity": "120", // optional
+                    "removeImages": ["images-1783438680001.png"], // optional - filenames to remove
+                },
+                images: [File_New] // optional - new files to append
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Product updated successfully!",
+                "data": {
+                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                    "name": "Wireless Headphone X Updated",
+                    "sku": "SKU-NB-78249",
+                    "shortDes": "Awesome sounding headphones.",
+                    "des": "Detailed features description here.",
+                    "specification": "Bluetooth 5.0, 40h Battery",
+                    "images": [
+                        "http://localhost:4200/uploads/images-1783438680000.png",
+                        "http://localhost:4200/uploads/images-1783439999999.png"
+                    ],
+                    "sizeId": "6a4d1c1fe46a05bfe8fdcc02",
+                    "colorId": "6a4d1c8fe46a05bfe8fdcc03",
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                    "subcategoryId": "6a4d17d3e46a05bfe8fdcbfd",
+                    "brandId": "6a4d1b7de46a05bfe8fdcc01",
+                    "tag": "trending",
+                    "price": "2700",
+                    "discount": true,
+                    "discountPercent": "15",
+                    "shippingFee": "60",
+                    "stock": true,
+                    "quantity": "120",
+                    "createdAt": "2026-07-07T15:35:00.000Z",
+                    "updatedAt": "2026-07-07T15:40:00.000Z",
+                    "category": {
+                        "id": "6a4a6a2bdfe6e7a891d1527c",
+                        "name": "Combo"
+                    },
+                    "Subcategory": {
+                        "id": "6a4d17d3e46a05bfe8fdcbfd",
+                        "name": "Bold Wines"
+                    },
+                    "brand": {
+                        "id": "6a4d1b7de46a05bfe8fdcc01",
+                        "name": "Sony"
+                    },
+                    "Size": {
+                        "id": "6a4d1c1fe46a05bfe8fdcc02",
+                        "name": "XL"
+                    },
+                    "Color": {
+                        "id": "6a4d1c8fe46a05bfe8fdcc03",
+                        "name": "Red"
+                    }
+                }
+            }
+
+    3. GET {{localURL}}/product
+            Query parameters (all optional):
+                page=1
+                limit=10
+                sortBy=createdAt
+                sortOrder=desc
+                categoryId=6a4a6a2bdfe6e7a891d1527c
+                subCategoryId=6a4d17d3e46a05bfe8fdcbfd
+                brandId=6a4d1b7de46a05bfe8fdcc01
+                sizeId=6a4d1c1fe46a05bfe8fdcc02
+                colorId=6a4d1c8fe46a05bfe8fdcc03
+                search=Headphone
+                minPrice=1000
+                maxPrice=3000
+                inStock=true
+                hasDiscount=true
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Product List Found",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1d9fe46a05bfe8fdcc04",
+                        "name": "Wireless Headphone X Updated",
+                        "sku": "SKU-NB-78249",
+                        "images": [
+                            "http://localhost:4200/uploads/images-1783438680000.png",
+                            "http://localhost:4200/uploads/images-1783439999999.png"
+                        ],
+                        "price": "2700",
+                        "shippingFee": "60",
+                        "discount": true,
+                        "discountPercent": "15",
+                        "stock": true,
+                        "quantity": "120",
+                        "createdAt": "2026-07-07T15:35:00.000Z",
+                        "updatedAt": "2026-07-07T15:40:00.000Z",
+                        "category": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo"
+                        },
+                        "Subcategory": {
+                            "id": "6a4d17d3e46a05bfe8fdcbfd",
+                            "name": "Bold Wines"
+                        },
+                        "brand": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony"
+                        },
+                        "Size": {
+                            "id": "6a4d1c1fe46a05bfe8fdcc02",
+                            "name": "XL"
+                        },
+                        "Color": {
+                            "id": "6a4d1c8fe46a05bfe8fdcc03",
+                            "name": "Red"
+                        },
+                        "_count": {
+                            "orderProducts": 0
+                        }
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        GET {{localURL}}/product/getAllByAdmin
+            Authentication
+            Query parameters (all optional, same as GET /product)
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Product List Found for admin",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": {
+                    "dashboardStats": {
+                        "totalProducts": 1,
+                        "totalProductsInStock": 1,
+                        "totalProductsOutOfStock": 0,
+                        "totalProductsWithDiscount": 1,
+                        "totalSales": 0,
+                        "totalRevenue": 0
+                    },
+                    "productsWithPhotoUrls": [
+                        {
+                            "id": "6a4d1d9fe46a05bfe8fdcc04",
+                            "name": "Wireless Headphone X Updated",
+                            "sku": "SKU-NB-78249",
+                            "images": [
+                                "http://localhost:4200/uploads/images-1783438680000.png",
+                                "http://localhost:4200/uploads/images-1783439999999.png"
+                            ],
+                            "price": "2700",
+                            "shippingFee": "60",
+                            "discount": true,
+                            "discountPercent": "15",
+                            "stock": true,
+                            "quantity": "120",
+                            "createdAt": "2026-07-07T15:35:00.000Z",
+                            "updatedAt": "2026-07-07T15:40:00.000Z",
+                            "category": {
+                                "id": "6a4a6a2bdfe6e7a891d1527c",
+                                "name": "Combo"
+                            },
+                            "Subcategory": {
+                                "id": "6a4d17d3e46a05bfe8fdcbfd",
+                                "name": "Bold Wines"
+                            },
+                            "brand": {
+                                "id": "6a4d1b7de46a05bfe8fdcc01",
+                                "name": "Sony"
+                            },
+                            "Size": {
+                                "id": "6a4d1c1fe46a05bfe8fdcc02",
+                                "name": "XL"
+                            },
+                            "Color": {
+                                "id": "6a4d1c8fe46a05bfe8fdcc03",
+                                "name": "Red"
+                            },
+                            "_count": {
+                                "orderProducts": 0
+                            },
+                            "statistics": {
+                                "totalSales": 0,
+                                "totalQuantitySold": 0,
+                                "totalRevenue": 0,
+                                "totalPayments": 0,
+                                "totalAvailable": 120,
+                                "isOutOfStock": false
+                            }
+                        }
+                    ]
+                }
+            }
+
+    5. GET {{localURL}}/product/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Product Found",
+                "data": {
+                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                    "name": "Wireless Headphone X Updated",
+                    "sku": "SKU-NB-78249",
+                    "shortDes": "Awesome sounding headphones.",
+                    "des": "Detailed features description here.",
+                    "specification": "Bluetooth 5.0, 40h Battery",
+                    "images": [
+                        "http://localhost:4200/uploads/images-1783438680000.png",
+                        "http://localhost:4200/uploads/images-1783439999999.png"
+                    ],
+                    "sizeId": "6a4d1c1fe46a05bfe8fdcc02",
+                    "colorId": "6a4d1c8fe46a05bfe8fdcc03",
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                    "subcategoryId": "6a4d17d3e46a05bfe8fdcbfd",
+                    "brandId": "6a4d1b7de46a05bfe8fdcc01",
+                    "tag": "trending",
+                    "price": "2700",
+                    "discount": true,
+                    "discountPercent": "15",
+                    "shippingFee": "60",
+                    "stock": true,
+                    "quantity": "120",
+                    "createdAt": "2026-07-07T15:35:00.000Z",
+                    "updatedAt": "2026-07-07T15:40:00.000Z",
+                    "category": {
+                        "id": "6a4a6a2bdfe6e7a891d1527c",
+                        "name": "Combo",
+                        "des": "Hi",
+                        "img": "img-1783262304513-322688558.png",
+                        "createdAt": "2026-07-05T14:28:59.881Z",
+                        "updatedAt": "2026-07-07T15:03:05.070Z"
+                    },
+                    "Subcategory": {
+                        "id": "6a4d17d3e46a05bfe8fdcbfd",
+                        "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                        "name": "Bold Wines",
+                        "des": "description of bold wines",
+                        "img": "",
+                        "createdAt": "2026-07-07T15:14:27.436Z",
+                        "updatedAt": "2026-07-07T15:14:27.436Z"
+                    },
+                    "brand": {
+                        "id": "6a4d1b7de46a05bfe8fdcc01",
+                        "name": "Sony",
+                        "des": "Electronics brand",
+                        "img": "img-1783437884411-204102262.png",
+                        "createdAt": "2026-07-07T15:20:00.000Z",
+                        "updatedAt": "2026-07-07T15:20:00.000Z"
+                    },
+                    "Size": {
+                        "id": "6a4d1c1fe46a05bfe8fdcc02",
+                        "name": "XL",
+                        "createdAt": "2026-07-07T15:25:00.000Z",
+                        "updatedAt": "2026-07-07T15:25:00.000Z"
+                    },
+                    "Color": {
+                        "id": "6a4d1c8fe46a05bfe8fdcc03",
+                        "name": "Red",
+                        "createdAt": "2026-07-07T15:28:00.000Z",
+                        "updatedAt": "2026-07-07T15:28:00.000Z"
+                    },
+                    "_count": {
+                        "orderProducts": 0
+                    },
+                    "reviews": []
+                }
+            }
+
+    6. For ADMIN Only
+        DELETE {{localURL}}/product/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Product deleted success.",
+                "data": {
+                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                    "name": "Wireless Headphone X Updated",
+                    "sku": "SKU-NB-78249",
+                    "images": [
+                        "images-1783438680000.png",
+                        "images-1783439999999.png"
+                    ],
+                    "price": "2700",
+                    "shippingFee": "60",
+                    "discount": true,
+                    "discountPercent": "15",
+                    "stock": true,
+                    "quantity": "120",
+                    "createdAt": "2026-07-07T15:35:00.000Z",
+                    "updatedAt": "2026-07-07T15:40:00.000Z"
+                }
+            }
+
+    7. GET {{localURL}}/product/best-sell
+            Query parameters (optional):
+                page=1
+                limit=10
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Best sell products retrieved successfully",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1d9fe46a05bfe8fdcc04",
+                        "name": "Wireless Headphone X Updated",
+                        "sku": "SKU-NB-78249",
+                        "images": [
+                            "http://localhost:4200/uploads/images-1783438680000.png"
+                        ],
+                        "price": "2700",
+                        "shippingFee": "60",
+                        "discount": true,
+                        "discountPercent": "15",
+                        "stock": true,
+                        "quantity": "120",
+                        "createdAt": "2026-07-07T15:35:00.000Z",
+                        "updatedAt": "2026-07-07T15:40:00.000Z",
+                        "category": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo"
+                        },
+                        "Subcategory": {
+                            "id": "6a4d17d3e46a05bfe8fdcbfd",
+                            "name": "Bold Wines"
+                        },
+                        "brand": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony"
+                        },
+                        "Size": {
+                            "id": "6a4d1c1fe46a05bfe8fdcc02",
+                            "name": "XL"
+                        },
+                        "Color": {
+                            "id": "6a4d1c8fe46a05bfe8fdcc03",
+                            "name": "Red"
+                        },
+                        "_count": {
+                            "orderProducts": 1
+                        }
+                    }
+                ]
+            }
+
+    8. GET {{localURL}}/product/on-sale
+            Query parameters (optional):
+                page=1
+                limit=10
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "On sale products retrieved successfully",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1d9fe46a05bfe8fdcc04",
+                        "name": "Wireless Headphone X Updated",
+                        "sku": "SKU-NB-78249",
+                        "images": [
+                            "http://localhost:4200/uploads/images-1783438680000.png"
+                        ],
+                        "price": "2700",
+                        "shippingFee": "60",
+                        "discount": true,
+                        "discountPercent": "15",
+                        "stock": true,
+                        "quantity": "120",
+                        "createdAt": "2026-07-07T15:35:00.000Z",
+                        "updatedAt": "2026-07-07T15:40:00.000Z",
+                        "category": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo"
+                        },
+                        "Subcategory": {
+                            "id": "6a4d17d3e46a05bfe8fdcbfd",
+                            "name": "Bold Wines"
+                        },
+                        "brand": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony"
+                        },
+                        "Size": {
+                            "id": "6a4d1c1fe46a05bfe8fdcc02",
+                            "name": "XL"
+                        },
+                        "Color": {
+                            "id": "6a4d1c8fe46a05bfe8fdcc03",
+                            "name": "Red"
+                        },
+                        "_count": {
+                            "orderProducts": 1
+                        }
+                    }
+                ]
+            }
+
+    9. GET {{localURL}}/product/top-rated
+            Query parameters (optional):
+                page=1
+                limit=10
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Top rated products retrieved successfully",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1d9fe46a05bfe8fdcc04",
+                        "name": "Wireless Headphone X Updated",
+                        "sku": "SKU-NB-78249",
+                        "images": [
+                            "http://localhost:4200/uploads/images-1783438680000.png"
+                        ],
+                        "price": "2700",
+                        "shippingFee": "60",
+                        "discount": true,
+                        "discountPercent": "15",
+                        "stock": true,
+                        "quantity": "120",
+                        "createdAt": "2026-07-07T15:35:00.000Z",
+                        "updatedAt": "2026-07-07T15:40:00.000Z",
+                        "category": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo"
+                        },
+                        "Subcategory": {
+                            "id": "6a4d17d3e46a05bfe8fdcbfd",
+                            "name": "Bold Wines"
+                        },
+                        "brand": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony"
+                        },
+                        "Size": {
+                            "id": "6a4d1c1fe46a05bfe8fdcc02",
+                            "name": "XL"
+                        },
+                        "Color": {
+                            "id": "6a4d1c8fe46a05bfe8fdcc03",
+                            "name": "Red"
+                        },
+                        "avgRating": 5,
+                        "_count": {
+                            "orderProducts": 1
+                        }
+                    }
+                ]
+            }
+
+    10. GET {{localURL}}/product/multiple-slider — REMOVED (see SLIDER Api's section below)
+
+
+SLIDER Api's =================
+
+    Sliders are admin-managed. Each slider can target:
+        - A set of specific PRODUCTS (type: "PRODUCT")
+        - An entire CATEGORY (type: "CATEGORY")
+        - An entire BRAND (type: "BRAND")
+    Each slider also has an optional banner image.
+
+    1. For ADMIN Only
+        POST {{localURL}}/slider
+            Authentication
+            req.body[form-data]: {
+                data: {
+                    "title": "String",
+                    "type": "PRODUCT" | "CATEGORY" | "BRAND",
+                    "productIds": ["6a4d1d9fe46a05bfe8fdcc04"], // required if type=PRODUCT
+                    "categoryId": "6a4a6a2bdfe6e7a891d1527c",  // required if type=CATEGORY
+                    "brandId": "6a4d1b7de46a05bfe8fdcc01",     // required if type=BRAND
+                    "active": true,                             // optional, default: true
+                    "sortOrder": 0                              // optional, for ordering
+                },
+                image: File  // optional banner image
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Slider created successfully!",
+                "data": {
+                    "id": "6a4d241fe46a05bfe8fdcc0e",
+                    "title": "Best Sellers",
+                    "type": "PRODUCT",
+                    "productIds": ["6a4d1d9fe46a05bfe8fdcc04"],
+                    "categoryId": null,
+                    "brandId": null,
+                    "image": "http://localhost:4200/uploads/slider-img-1783440000000.png",
+                    "active": true,
+                    "sortOrder": 0,
+                    "createdAt": "2026-07-07T17:00:00.000Z",
+                    "updatedAt": "2026-07-07T17:00:00.000Z"
+                }
+            }
+
+    2. For ADMIN Only
+        PATCH {{localURL}}/slider/:id
+            Authentication
+            req.body[form-data]: {
+                data: {
+                    "title": "String (optional)",
+                    "type": "PRODUCT" | "CATEGORY" | "BRAND" (optional),
+                    "productIds": ["id1", "id2"],     // optional, required if changing to PRODUCT
+                    "categoryId": "categoryId",       // optional, required if changing to CATEGORY
+                    "brandId": "brandId",             // optional, required if changing to BRAND
+                    "active": false,                  // optional
+                    "sortOrder": 1,                   // optional
+                    "removeImage": true               // optional, removes the existing image
+                },
+                image: File  // optional, new banner image (replaces existing)
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Slider updated successfully!",
+                "data": {
+                    "id": "6a4d241fe46a05bfe8fdcc0e",
+                    "title": "Best Sellers Updated",
+                    "type": "PRODUCT",
+                    "productIds": ["6a4d1d9fe46a05bfe8fdcc04"],
+                    "categoryId": null,
+                    "brandId": null,
+                    "image": "http://localhost:4200/uploads/slider-img-1783440001000.png",
+                    "active": true,
+                    "sortOrder": 1,
+                    "createdAt": "2026-07-07T17:00:00.000Z",
+                    "updatedAt": "2026-07-07T17:05:00.000Z"
+                }
+            }
+
+    3. GET {{localURL}}/slider
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Slider list found",
+                "data": [
+                    {
+                        "id": "6a4d241fe46a05bfe8fdcc0e",
+                        "title": "Best Sellers",
+                        "type": "PRODUCT",
+                        "productIds": ["6a4d1d9fe46a05bfe8fdcc04"],
+                        "categoryId": null,
+                        "brandId": null,
+                        "image": "http://localhost:4200/uploads/slider-img-1783440000000.png",
+                        "active": true,
+                        "sortOrder": 0,
+                        "createdAt": "2026-07-07T17:00:00.000Z",
+                        "updatedAt": "2026-07-07T17:00:00.000Z",
+                        "data": [
+                            {
+                                "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                "name": "Wireless Headphone X Updated",
+                                "sku": "SKU-NB-78249",
+                                "images": ["http://localhost:4200/uploads/images-1783438680000.png"],
+                                "price": "2700",
+                                "shippingFee": "60",
+                                "discount": true,
+                                "discountPercent": "15",
+                                "stock": true,
+                                "category": { "id": "6a4a6a2bdfe6e7a891d1527c", "name": "Combo" },
+                                "brand": { "id": "6a4d1b7de46a05bfe8fdcc01", "name": "Sony" }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "6a4d242fe46a05bfe8fdcc0f",
+                        "title": "Electronics Category",
+                        "type": "CATEGORY",
+                        "productIds": [],
+                        "categoryId": "6a4a6a2bdfe6e7a891d1527c",
+                        "brandId": null,
+                        "image": "http://localhost:4200/uploads/slider-cat-img.png",
+                        "active": true,
+                        "sortOrder": 1,
+                        "createdAt": "2026-07-07T17:01:00.000Z",
+                        "updatedAt": "2026-07-07T17:01:00.000Z",
+                        "data": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo",
+                            "des": "Hi",
+                            "img": "http://localhost:4200/uploads/img-1783262304513-322688558.png",
+                            "Subcategory": [],
+                            "products": [
+                                {
+                                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                    "name": "Wireless Headphone X Updated",
+                                    "sku": "SKU-NB-78249",
+                                    "images": ["http://localhost:4200/uploads/images-1783438680000.png"],
+                                    "price": "2700",
+                                    "shippingFee": "60",
+                                    "discount": true,
+                                    "discountPercent": "15",
+                                    "stock": true,
+                                    "brand": { "id": "6a4d1b7de46a05bfe8fdcc01", "name": "Sony" }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "6a4d243fe46a05bfe8fdcc10",
+                        "title": "Sony Brand",
+                        "type": "BRAND",
+                        "productIds": [],
+                        "categoryId": null,
+                        "brandId": "6a4d1b7de46a05bfe8fdcc01",
+                        "image": null,
+                        "active": true,
+                        "sortOrder": 2,
+                        "createdAt": "2026-07-07T17:02:00.000Z",
+                        "updatedAt": "2026-07-07T17:02:00.000Z",
+                        "data": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony",
+                            "des": "Electronics brand",
+                            "img": "http://localhost:4200/uploads/img-1783437884411-204102262.png",
+                            "products": [
+                                {
+                                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                    "name": "Wireless Headphone X Updated",
+                                    "sku": "SKU-NB-78249",
+                                    "images": ["http://localhost:4200/uploads/images-1783438680000.png"],
+                                    "price": "2700",
+                                    "shippingFee": "60",
+                                    "discount": true,
+                                    "discountPercent": "15",
+                                    "stock": true,
+                                    "category": { "id": "6a4a6a2bdfe6e7a891d1527c", "name": "Combo" }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        GET {{localURL}}/slider/getAllByAdmin
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Slider list found for admin",
+                "data": [
+                    {
+                        "id": "6a4d241fe46a05bfe8fdcc0e",
+                        "title": "Best Sellers",
+                        "type": "PRODUCT",
+                        "productIds": ["6a4d1d9fe46a05bfe8fdcc04"],
+                        "categoryId": null,
+                        "brandId": null,
+                        "image": "http://localhost:4200/uploads/slider-img-1783440000000.png",
+                        "active": true,
+                        "sortOrder": 0,
+                        "createdAt": "2026-07-07T17:00:00.000Z",
+                        "updatedAt": "2026-07-07T17:00:00.000Z"
+                    }
+                ]
+            }
+
+    5. GET {{localURL}}/slider/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Slider found",
+                "data": {
+                    "id": "6a4d241fe46a05bfe8fdcc0e",
+                    "title": "Best Sellers",
+                    "type": "PRODUCT",
+                    "productIds": ["6a4d1d9fe46a05bfe8fdcc04"],
+                    "categoryId": null,
+                    "brandId": null,
+                    "image": "http://localhost:4200/uploads/slider-img-1783440000000.png",
+                    "active": true,
+                    "sortOrder": 0,
+                    "createdAt": "2026-07-07T17:00:00.000Z",
+                    "updatedAt": "2026-07-07T17:00:00.000Z"
+                }
+            }
+
+    6. For ADMIN Only
+        DELETE {{localURL}}/slider/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Slider deleted successfully",
+                "data": {
+                    "id": "6a4d241fe46a05bfe8fdcc0e",
+                    "title": "Best Sellers",
+                    "type": "PRODUCT",
+                    "productIds": ["6a4d1d9fe46a05bfe8fdcc04"],
+                    "categoryId": null,
+                    "brandId": null,
+                    "image": "slider-img-1783440000000.png",
+                    "active": true,
+                    "sortOrder": 0,
+                    "createdAt": "2026-07-07T17:00:00.000Z",
+                    "updatedAt": "2026-07-07T17:00:00.000Z"
+                }
+            }
+                "data": {
+                    "categories": [
+                        {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo",
+                            "des": "Hi",
+                            "img": "http://localhost:4200/uploads/img-1783262304513-322688558.png"
+                        }
+                    ],
+                    "brands": [
+                        {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony",
+                            "des": "Electronics brand",
+                            "img": "http://localhost:4200/uploads/img-1783437884411-204102262.png"
+                        }
+                    ],
+                    "bestSell": [
+                        {
+                            "id": "6a4d1d9fe46a05bfe8fdcc04",
+                            "name": "Wireless Headphone X Updated",
+                            "sku": "SKU-NB-78249",
+                            "images": [
+                                "http://localhost:4200/uploads/images-1783438680000.png"
+                            ],
+                            "price": "2700",
+                            "shippingFee": "60",
+                            "discount": true,
+                            "discountPercent": "15",
+                            "stock": true,
+                            "quantity": "120",
+                            "createdAt": "2026-07-07T15:35:00.000Z",
+                            "updatedAt": "2026-07-07T15:40:00.000Z",
+                            "category": {
+                                "id": "6a4a6a2bdfe6e7a891d1527c",
+                                "name": "Combo"
+                            },
+                            "Subcategory": {
+                                "id": "6a4d17d3e46a05bfe8fdcbfd",
+                                "name": "Bold Wines"
+                            },
+                            "brand": {
+                                "id": "6a4d1b7de46a05bfe8fdcc01",
+                                "name": "Sony"
+                            }
+                        }
+                    ],
+                    "onSale": [
+                        {
+                            "id": "6a4d1d9fe46a05bfe8fdcc04",
+                            "name": "Wireless Headphone X Updated",
+                            "sku": "SKU-NB-78249",
+                            "images": [
+                                "http://localhost:4200/uploads/images-1783438680000.png"
+                            ],
+                            "price": "2700",
+                            "shippingFee": "60",
+                            "discount": true,
+                            "discountPercent": "15",
+                            "stock": true,
+                            "quantity": "120",
+                            "createdAt": "2026-07-07T15:35:00.000Z",
+                            "updatedAt": "2026-07-07T15:40:00.000Z",
+                            "category": {
+                                "id": "6a4a6a2bdfe6e7a891d1527c",
+                                "name": "Combo"
+                            },
+                            "Subcategory": {
+                                "id": "6a4d17d3e46a05bfe8fdcbfd",
+                                "name": "Bold Wines"
+                            },
+                            "brand": {
+                                "id": "6a4d1b7de46a05bfe8fdcc01",
+                                "name": "Sony"
+                            }
+                        }
+                    ],
+                    "topRated": [
+                        {
+                            "id": "6a4d1d9fe46a05bfe8fdcc04",
+                            "name": "Wireless Headphone X Updated",
+                            "sku": "SKU-NB-78249",
+                            "images": [
+                                "http://localhost:4200/uploads/images-1783438680000.png"
+                            ],
+                            "price": "2700",
+                            "shippingFee": "60",
+                            "discount": true,
+                            "discountPercent": "15",
+                            "stock": true,
+                            "quantity": "120",
+                            "createdAt": "2026-07-07T15:35:00.000Z",
+                            "updatedAt": "2026-07-07T15:40:00.000Z",
+                            "category": {
+                                "id": "6a4a6a2bdfe6e7a891d1527c",
+                                "name": "Combo"
+                            },
+                            "Subcategory": {
+                                "id": "6a4d17d3e46a05bfe8fdcbfd",
+                                "name": "Bold Wines"
+                            },
+                            "brand": {
+                                "id": "6a4d1b7de46a05bfe8fdcc01",
+                                "name": "Sony"
+                            },
+                            "avgRating": 5
+                        }
+                    ],
+                    "newArrivals": [
+                        {
+                            "id": "6a4d1d9fe46a05bfe8fdcc04",
+                            "name": "Wireless Headphone X Updated",
+                            "sku": "SKU-NB-78249",
+                            "images": [
+                                "http://localhost:4200/uploads/images-1783438680000.png"
+                            ],
+                            "price": "2700",
+                            "shippingFee": "60",
+                            "discount": true,
+                            "discountPercent": "15",
+                            "stock": true,
+                            "quantity": "120",
+                            "createdAt": "2026-07-07T15:35:00.000Z",
+                            "updatedAt": "2026-07-07T15:40:00.000Z",
+                            "category": {
+                                "id": "6a4a6a2bdfe6e7a891d1527c",
+                                "name": "Combo"
+                            },
+                            "Subcategory": {
+                                "id": "6a4d17d3e46a05bfe8fdcbfd",
+                                "name": "Bold Wines"
+                            },
+                            "brand": {
+                                "id": "6a4d1b7de46a05bfe8fdcc01",
+                                "name": "Sony"
+                            }
+                        }
+                    ]
+                }
+            }
+
+
+CART Api's =================
+
+    1. POST {{localURL}}/cart
+            Authentication
+            req.body: {
+                "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                "quantity": "2"
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "New cart item added.", // Or "Cart updated successfully!" if it exists
+                "data": {
+                    "id": "6a4d1e2fe46a05bfe8fdcc05",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "quantity": "2",
+                    "createdAt": "2026-07-07T15:45:00.000Z",
+                    "updatedAt": "2026-07-07T15:45:00.000Z",
+                    "product": {
+                        "id": "6a4d1d9fe46a05bfe8fdcc04",
+                        "name": "Wireless Headphone X Updated",
+                        "images": [
+                            "images-1783438680000.png"
+                        ],
+                        "price": "2700",
+                        "discountPercent": "15",
+                        "discount": true,
+                        "shippingFee": "60",
+                        "category": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo"
+                        },
+                        "brand": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony"
+                        }
+                    }
+                }
+            }
+
+    2. GET {{localURL}}/cart
+            Authentication
+            Query parameters (optional):
+                page=1
+                limit=10
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Cart list found",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": {
+                    "carts": [
+                        {
+                            "id": "6a4d1e2fe46a05bfe8fdcc05",
+                            "quantity": "2",
+                            "createdAt": "2026-07-07T15:45:00.000Z",
+                            "product": {
+                                "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                "name": "Wireless Headphone X Updated",
+                                "images": [
+                                    "images-1783438680000.png"
+                                ],
+                                "price": "2700",
+                                "discountPercent": "15",
+                                "discount": true,
+                                "shippingFee": "60",
+                                "Size": {
+                                    "id": "6a4d1c1fe46a05bfe8fdcc02",
+                                    "name": "XL"
+                                },
+                                "Color": {
+                                    "id": "6a4d1c8fe46a05bfe8fdcc03",
+                                    "name": "Red"
+                                },
+                                "category": {
+                                    "id": "6a4a6a2bdfe6e7a891d1527c",
+                                    "name": "Combo"
+                                },
+                                "brand": {
+                                    "id": "6a4d1b7de46a05bfe8fdcc01",
+                                    "name": "Sony",
+                                    "img": "img-1783437884411-204102262.png"
+                                }
+                            },
+                            "priceInfo": {
+                                "unitPrice": 2700,
+                                "discountPercent": 15,
+                                "discountAmount": 405,
+                                "shippingFee": 60,
+                                "finalPrice": 2295,
+                                "itemTotal": 4650
+                            }
+                        }
+                    ],
+                    "summary": {
+                        "subtotal": 5400,
+                        "totalDiscount": 810,
+                        "totalItems": 1,
+                        "totalQuantity": 2,
+                        "totalShippingFee": 60,
+                        "estimatedTotal": 4650
+                    }
+                }
+            }
+
+    3. GET {{localURL}}/cart/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Cart item found",
+                "data": {
+                    "id": "6a4d1e2fe46a05bfe8fdcc05",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "quantity": "2",
+                    "createdAt": "2026-07-07T15:45:00.000Z",
+                    "product": {
+                        "id": "6a4d1d9fe46a05bfe8fdcc04",
+                        "name": "Wireless Headphone X Updated",
+                        "images": [
+                            "images-1783438680000.png"
+                        ],
+                        "price": "2700",
+                        "category": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo"
+                        },
+                        "brand": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony",
+                            "img": "img-1783437884411-204102262.png"
+                        }
+                    }
+                }
+            }
+
+    4. PATCH {{localURL}}/cart/:id
+            Authentication
+            req.body: {
+                "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                "quantity": "5"
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Cart updated successfully!",
+                "data": {
+                    "id": "6a4d1e2fe46a05bfe8fdcc05",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "quantity": "5",
+                    "createdAt": "2026-07-07T15:45:00.000Z",
+                    "updatedAt": "2026-07-07T15:50:00.000Z",
+                    "product": {
+                        "id": "6a4d1d9fe46a05bfe8fdcc04",
+                        "name": "Wireless Headphone X Updated",
+                        "images": [
+                            "images-1783438680000.png"
+                        ],
+                        "price": "2700",
+                        "category": {
+                            "id": "6a4a6a2bdfe6e7a891d1527c",
+                            "name": "Combo"
+                        },
+                        "brand": {
+                            "id": "6a4d1b7de46a05bfe8fdcc01",
+                            "name": "Sony"
+                        }
+                    }
+                }
+            }
+
+    5. DELETE {{localURL}}/cart/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Cart item deleted successfully",
+                "data": {
+                    "id": "6a4d1e2fe46a05bfe8fdcc05",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "quantity": "5",
+                    "createdAt": "2026-07-07T15:45:00.000Z",
+                    "updatedAt": "2026-07-07T15:50:00.000Z"
+                }
+            }
+
+
+WISHLIST Api's =================
+
+    1. POST {{localURL}}/wishlist
+            Authentication
+            req.body: {
+                "productId": "6a4d1d9fe46a05bfe8fdcc04"
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Wish created successfully",
+                "data": {
+                    "id": "6a4d1ebd714130d84d528d95",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "createdAt": "2026-07-07T15:55:00.000Z",
+                    "updatedAt": "2026-07-07T15:55:00.000Z"
+                }
+            }
+
+    2. GET {{localURL}}/wishlist
+            Authentication
+            Query parameters (optional):
+                page=1
+                limit=10
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Wish list found",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1ebd714130d84d528d95",
+                        "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                        "createdAt": "2026-07-07T15:55:00.000Z",
+                        "product": {
+                            "id": "6a4d1d9fe46a05bfe8fdcc04",
+                            "name": "Wireless Headphone X Updated",
+                            "images": [
+                                "http://localhost:4200/uploads/images-1783438680000.png"
+                            ],
+                            "price": "2700",
+                            "discountPercent": "15",
+                            "discount": true,
+                            "category": {
+                                "id": "6a4a6a2bdfe6e7a891d1527c",
+                                "name": "Combo"
+                            },
+                            "brand": {
+                                "id": "6a4d1b7de46a05bfe8fdcc01",
+                                "name": "Sony"
+                            }
+                        }
+                    }
+                ]
+            }
+
+    3. GET {{localURL}}/wishlist/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Wish found",
+                "data": {
+                    "id": "6a4d1ebd714130d84d528d95",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "createdAt": "2026-07-07T15:55:00.000Z",
+                    "updatedAt": "2026-07-07T15:55:00.000Z"
+                }
+            }
+
+    4. DELETE {{localURL}}/wishlist/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Wish deleted successfully",
+                "data": {
+                    "id": "6a4d1ebd714130d84d528d95",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "createdAt": "2026-07-07T15:55:00.000Z",
+                    "updatedAt": "2026-07-07T15:55:00.000Z"
+                }
+            }
+
+
+ORDER Api's =================
+
+    1. POST {{localURL}}/order/createOrder
+            Authentication
+            req.body: {
+                "frontendCartItems": [
+                    {
+                        "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                        "quantity": 2
+                    }
+                ], // optional: if empty, creates order from user's DB cart items
+                "shippingDetails": {
+                    "name": "Md Towhid",
+                    "email": "developertowhid@gmail.com",
+                    "phone": "01829245088",
+                    "address": "Banani, Dhaka",
+                    "city": "Dhaka",
+                    "state": "Dhaka",
+                    "country": "Bangladesh",
+                    "zipCode": "1213",
+                    "currency": "BDT", // "BDT" | "USD"
+                    "paymentMethod": "COD" // "COD" | "SSL_COMMERZ"
+                }
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Order created successfully",
+                "data": {
+                    "order": {
+                        "id": "6a4d1f5ee46a05bfe8fdcc06",
+                        "orderNo": "ORD-1783439700000-1234",
+                        "status": "PENDING",
+                        "userId": "6a49138edfcdfd1ed73e30e4",
+                        "name": "Md Towhid",
+                        "email": "developertowhid@gmail.com",
+                        "phone": "01829245088",
+                        "address": "Banani, Dhaka",
+                        "city": "Dhaka",
+                        "state": "Dhaka",
+                        "country": "Bangladesh",
+                        "zipCode": "1213",
+                        "amount": 4650,
+                        "shippingFee": 60,
+                        "currency": "BDT",
+                        "paymentMethod": "COD",
+                        "createdAt": "2026-07-07T16:00:00.000Z",
+                        "updatedAt": "2026-07-07T16:00:00.000Z",
+                        "orderProducts": [
+                            {
+                                "id": "6a4d1f5ee46a05bfe8fdcc07",
+                                "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                                "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                                "quantity": 2,
+                                "price": 2295,
+                                "isReviewed": false,
+                                "product": {
+                                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                    "name": "Wireless Headphone X Updated",
+                                    "images": [
+                                        "images-1783438680000.png"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "orderSummary": {
+                        "subtotal": 5400,
+                        "totalDiscount": 810,
+                        "totalItems": 1,
+                        "totalQuantity": 2,
+                        "totalShippingFee": 60,
+                        "estimatedTotal": 4650
+                    }
+                }
+            }
+
+    2. GET {{localURL}}/order/allOrder
+            Authentication
+            Query parameters (optional):
+                page=1
+                limit=10
+                sortBy=createdAt
+                sortOrder=desc
+                status=PENDING // PENDING | DISPATCHED | DELIVERED | CANCELLED
+            response: {
+                "statusCode": 201, // Note: controller returns 201 Created for allOrder get
+                "status": true,
+                "message": "All Order Found successfully",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1f5ee46a05bfe8fdcc06",
+                        "orderNo": "ORD-1783439700000-1234",
+                        "status": "PENDING",
+                        "paymentMethod": "COD",
+                        "amount": 4650,
+                        "shippingFee": 60,
+                        "currency": "BDT",
+                        "name": "Md Towhid",
+                        "email": "developertowhid@gmail.com",
+                        "phone": "01829245088",
+                        "address": "Banani, Dhaka",
+                        "city": "Dhaka",
+                        "state": "Dhaka",
+                        "country": "Bangladesh",
+                        "zipCode": "1213",
+                        "createdAt": "2026-07-07T16:00:00.000Z",
+                        "updatedAt": "2026-07-07T16:00:00.000Z",
+                        "orderProducts": [
+                            {
+                                "id": "6a4d1f5ee46a05bfe8fdcc07",
+                                "quantity": 2,
+                                "price": 2295,
+                                "isReviewed": false,
+                                "product": {
+                                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                    "name": "Wireless Headphone X Updated",
+                                    "images": [
+                                        "http://localhost:4200/uploads/images-1783438680000.png"
+                                    ],
+                                    "price": "2700"
+                                }
+                            }
+                        ],
+                        "payments": [
+                            {
+                                "id": "6a4d1f5ee46a05bfe8fdcc08",
+                                "amount": 4650,
+                                "paidAmount": 0,
+                                "status": "PENDING",
+                                "method": "COD",
+                                "createdAt": "2026-07-07T16:00:00.000Z"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+    3. For ADMIN Only
+        GET {{localURL}}/order/allOrderAdmin
+            Authentication
+            Query parameters (optional, same as GET /order/allOrder)
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "All Order Found successfully",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1f5ee46a05bfe8fdcc06",
+                        "orderNo": "ORD-1783439700000-1234",
+                        "status": "PENDING",
+                        "paymentMethod": "COD",
+                        "amount": 4650,
+                        "shippingFee": 60,
+                        "currency": "BDT",
+                        "name": "Md Towhid",
+                        "email": "developertowhid@gmail.com",
+                        "phone": "01829245088",
+                        "address": "Banani, Dhaka",
+                        "city": "Dhaka",
+                        "state": "Dhaka",
+                        "country": "Bangladesh",
+                        "zipCode": "1213",
+                        "trackingNumber": null,
+                        "estimatedDelivery": null,
+                        "createdAt": "2026-07-07T16:00:00.000Z",
+                        "updatedAt": "2026-07-07T16:00:00.000Z",
+                        "user": {
+                            "id": "6a49138edfcdfd1ed73e30e4",
+                            "name": "Md Towhid",
+                            "email": "developertowhid@gmail.com",
+                            "phone": "01829245088",
+                            "photo": "http://localhost:4200/uploads/photo-1783427538082-264005523.webp"
+                        },
+                        "orderProducts": [
+                            {
+                                "id": "6a4d1f5ee46a05bfe8fdcc07",
+                                "quantity": 2,
+                                "price": 2295,
+                                "isReviewed": false,
+                                "product": {
+                                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                    "name": "Wireless Headphone X Updated",
+                                    "images": [
+                                        "http://localhost:4200/uploads/images-1783438680000.png"
+                                    ],
+                                    "price": "2700"
+                                }
+                            }
+                        ],
+                        "payments": [
+                            {
+                                "id": "6a4d1f5ee46a05bfe8fdcc08",
+                                "amount": 4650,
+                                "paidAmount": 0,
+                                "status": "PENDING",
+                                "method": "COD",
+                                "createdAt": "2026-07-07T16:00:00.000Z"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        GET {{localURL}}/order/:id/details
+            Authentication
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Order details found",
+                "data": {
+                    "id": "6a4d1f5ee46a05bfe8fdcc06",
+                    "orderNo": "ORD-1783439700000-1234",
+                    "status": "PENDING",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "name": "Md Towhid",
+                    "email": "developertowhid@gmail.com",
+                    "phone": "01829245088",
+                    "address": "Banani, Dhaka",
+                    "city": "Dhaka",
+                    "state": "Dhaka",
+                    "country": "Bangladesh",
+                    "zipCode": "1213",
+                    "amount": 4650,
+                    "shippingFee": 60,
+                    "currency": "BDT",
+                    "paymentMethod": "COD",
+                    "trackingNumber": null,
+                    "estimatedDelivery": null,
+                    "createdAt": "2026-07-07T16:00:00.000Z",
+                    "updatedAt": "2026-07-07T16:00:00.000Z",
+                    "orderProducts": [
+                        {
+                            "id": "6a4d1f5ee46a05bfe8fdcc07",
+                            "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                            "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                            "quantity": 2,
+                            "price": 2295,
+                            "isReviewed": false,
+                            "product": {
+                                "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                "name": "Wireless Headphone X Updated",
+                                "images": [
+                                    "http://localhost:4200/uploads/images-1783438680000.png"
+                                ],
+                                "price": "2700"
+                            }
+                        }
+                    ],
+                    "payments": [
+                        {
+                            "id": "6a4d1f5ee46a05bfe8fdcc08",
+                            "userId": "6a49138edfcdfd1ed73e30e4",
+                            "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                            "name": null,
+                            "amount": 4650,
+                            "paidAmount": 0,
+                            "currency": "BDT",
+                            "status": "PENDING",
+                            "method": "COD",
+                            "metadata": null,
+                            "createdAt": "2026-07-07T16:00:00.000Z",
+                            "updatedAt": "2026-07-07T16:00:00.000Z"
+                        }
+                    ]
+                }
+            }
+
+    5. For ADMIN Only
+        PATCH {{localURL}}/order/status/:id
+            Authentication
+            req.body: {
+                "status": "DELIVERED" // PENDING | DISPATCHED | DELIVERED | CANCELLED
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Order status updated",
+                "data": {
+                    "orderUpdate": {
+                        "id": "6a4d1f5ee46a05bfe8fdcc06",
+                        "orderNo": "ORD-1783439700000-1234",
+                        "status": "DELIVERED",
+                        "userId": "6a49138edfcdfd1ed73e30e4"
+                    }
+                }
+            }
+
+
+PAYMENT Api's =================
+
+    1. GET {{localURL}}/payment/history
+            Authentication
+            Query parameters (optional):
+                page=1
+                limit=10
+                status=PAID // PENDING | PAID | CANCELLED
+                sortBy=createdAt
+                sortOrder=desc
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "User payment history found",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d1f5ee46a05bfe8fdcc08",
+                        "userId": "6a49138edfcdfd1ed73e30e4",
+                        "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                        "name": null,
+                        "amount": 4650,
+                        "paidAmount": 4650,
+                        "currency": "BDT",
+                        "status": "PAID",
+                        "method": "COD",
+                        "order": {
+                            "id": "6a4d1f5ee46a05bfe8fdcc06",
+                            "userId": "6a49138edfcdfd1ed73e30e4",
+                            "orderNo": "ORD-1783439700000-1234",
+                            "name": "Md Towhid",
+                            "email": "developertowhid@gmail.com",
+                            "address": "Banani, Dhaka",
+                            "orderProducts": [
+                                {
+                                    "id": "6a4d1f5ee46a05bfe8fdcc07",
+                                    "price": 2295,
+                                    "quantity": 2,
+                                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                                    "isReviewed": false,
+                                    "product": {
+                                        "name": "Wireless Headphone X Updated",
+                                        "images": [
+                                            "images-1783438680000.png"
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+
+    2. For ADMIN Only
+        GET {{localURL}}/payment/adminHistory
+            Authentication
+            Query parameters (optional, same as GET /payment/history)
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "All payment history found",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [ ... ]
+            }
+
+    3. For ADMIN Only
+        GET {{localURL}}/payment/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Payment details found",
+                "data": {
+                    "id": "6a4d1f5ee46a05bfe8fdcc08",
+                    "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                    "name": null,
+                    "amount": 4650,
+                    "paidAmount": 4650,
+                    "currency": "BDT",
+                    "status": "PAID",
+                    "method": "COD",
+                    "user": {
+                        "id": "6a49138edfcdfd1ed73e30e4",
+                        "name": "Md Towhid",
+                        "email": "developertowhid@gmail.com",
+                        "phone": "01829245088",
+                        "photo": "http://localhost:4200/uploads/photo-1783427538082-264005523.webp"
+                    },
+                    "order": {
+                        "id": "6a4d1f5ee46a05bfe8fdcc06",
+                        "userId": "6a49138edfcdfd1ed73e30e4"
+                    }
+                }
+            }
+
+
+REVIEW Api's =================
+
+    1. POST {{localURL}}/review
+            Authentication
+            req.body: {
+                "data": {
+                    "rating": "5",
+                    "des": "Fantastic headphone, really solid bass!",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "orderId": "6a4d1f5ee46a05bfe8fdcc06"
+                }
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Review created successfully",
+                "data": {
+                    "id": "6a4d204fe46a05bfe8fdcc09",
+                    "rating": 5,
+                    "des": "Fantastic headphone, really solid bass!",
+                    "isApproved": false,
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "createdAt": "2026-07-07T16:15:00.000Z",
+                    "updatedAt": "2026-07-07T16:15:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "You have already reviewed this product!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "You have already reviewed this product!"
+                    }
+                ]
+            }
+
+    2. For ADMIN Only
+        GET {{localURL}}/review/getAll
+            Authentication
+            Query parameters (optional):
+                page=1
+                limit=10
+                isApproved=false // true | false
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Product Review List Found",
+                "data": {
+                    "total": 1,
+                    "productReview": [
+                        {
+                            "id": "6a4d204fe46a05bfe8fdcc09",
+                            "rating": 5,
+                            "des": "Fantastic headphone, really solid bass!",
+                            "isApproved": false,
+                            "userId": "6a49138edfcdfd1ed73e30e4",
+                            "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                            "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                            "createdAt": "2026-07-07T16:15:00.000Z",
+                            "updatedAt": "2026-07-07T16:15:00.000Z"
+                        }
+                    ]
+                }
+            }
+
+    3. GET {{localURL}}/review/:productId
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Product Review List Found",
+                "data": {
+                    "total": 0,
+                    "productReview": [] // Returns only approved reviews
+                }
+            }
+
+    4. GET {{localURL}}/review/isReviewed/:productId
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Review checked !",
+                "data": {
+                    "isReviewed": false // true | false
+                }
+            }
+
+    5. GET {{localURL}}/review/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Review Found",
+                "data": {
+                    "id": "6a4d204fe46a05bfe8fdcc09",
+                    "rating": 5,
+                    "des": "Fantastic headphone, really solid bass!",
+                    "isApproved": false,
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "createdAt": "2026-07-07T16:15:00.000Z",
+                    "updatedAt": "2026-07-07T16:15:00.000Z"
+                }
+            }
+
+    6. For ADMIN Only
+        PATCH {{localURL}}/review/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Review approved !",
+                "data": {
+                    "approve": {
+                        "id": "6a4d204fe46a05bfe8fdcc09",
+                        "rating": 5,
+                        "des": "Fantastic headphone, really solid bass!",
+                        "isApproved": true,
+                        "userId": "6a49138edfcdfd1ed73e30e4",
+                        "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                        "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                        "createdAt": "2026-07-07T16:15:00.000Z",
+                        "updatedAt": "2026-07-07T16:20:00.000Z"
+                    }
+                }
+            }
+
+    7. For ADMIN Only
+        DELETE {{localURL}}/review/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Brand deleted success.", // Note: returns "Brand deleted success." in review controller
+                "data": {
+                    "id": "6a4d204fe46a05bfe8fdcc09",
+                    "rating": 5,
+                    "des": "Fantastic headphone, really solid bass!",
+                    "isApproved": true,
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "orderId": "6a4d1f5ee46a05bfe8fdcc06",
+                    "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                    "createdAt": "2026-07-07T16:15:00.000Z",
+                    "updatedAt": "2026-07-07T16:20:00.000Z"
+                }
+            }
+
+
+SOCIAL Api's =================
+
+    1. For ADMIN Only
+        POST {{localURL}}/social
+            Authentication
+            req.body: {
+                "pinterest": "https://pinterest.com/nobodeal",
+                "linkedin": "https://linkedin.com/company/nobodeal",
+                "instagram": "https://instagram.com/nobodeal",
+                "facebook": "https://facebook.com/nobodeal"
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Socials updated successfully",
+                "data": {
+                    "id": "6a4d212fe46a05bfe8fdcc0a",
+                    "pinterest": "https://pinterest.com/nobodeal",
+                    "linkedin": "https://linkedin.com/company/nobodeal",
+                    "instagram": "https://instagram.com/nobodeal",
+                    "facebook": "https://facebook.com/nobodeal",
+                    "createdAt": "2026-07-07T16:25:00.000Z",
+                    "updatedAt": "2026-07-07T16:25:00.000Z"
+                }
+            }
+
+    2. GET {{localURL}}/social
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "socials found.",
+                "data": {
+                    "id": "6a4d212fe46a05bfe8fdcc0a",
+                    "pinterest": "https://pinterest.com/nobodeal",
+                    "linkedin": "https://linkedin.com/company/nobodeal",
+                    "instagram": "https://instagram.com/nobodeal",
+                    "facebook": "https://facebook.com/nobodeal",
+                    "createdAt": "2026-07-07T16:25:00.000Z",
+                    "updatedAt": "2026-07-07T16:25:00.000Z"
+                }
+            }
+
+
+SUBSCRIBER Api's =================
+
+    1. POST {{localURL}}/subscriber
+            req.body: {
+                "email": "user@example.com"
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Subscribed successfully",
+                "data": {
+                    "id": "6a4d21bfe46a05bfe8fdcc0a",
+                    "email": "user@example.com",
+                    "createdAt": "2026-07-07T16:28:00.000Z"
+                }
+            }
+            Error Response: {
+                "status": false,
+                "message": "This email is already subscribed!",
+                "errors": [
+                    {
+                        "path": "",
+                        "message": "This email is already subscribed!"
+                    }
+                ]
+            }
+
+    2. For ADMIN Only
+        GET {{localURL}}/subscriber
+            Authentication
+            Query parameters (optional):
+                page=1
+                limit=10
+                sortBy=createdAt
+                sortOrder=desc
+                search=example.com
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "All subscribers",
+                "meta": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10
+                },
+                "data": [
+                    {
+                        "id": "6a4d21bfe46a05bfe8fdcc0a",
+                        "email": "user@example.com",
+                        "createdAt": "2026-07-07T16:28:00.000Z"
+                    }
+                ]
+            }
+
+
+DASHBOARD Api's =================
+
+    1. For ADMIN Only
+        GET {{localURL}}/dashboard/stats
+            Authentication
+            Query parameters (optional):
+                month=6 // 0-11 (0 = January)
+                year=2026
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Dashboard statistics retrieved successfully",
+                "data": {
+                    "totalEarnings": {
+                        "entireTotal": "$4650.000",
+                        "selectedMonthTotal": "$4650.000",
+                        "change": 100
+                    },
+                    "totalOrders": {
+                        "entireTotal": 1,
+                        "selectedMonthTotal": 1,
+                        "change": 100
+                    },
+                    "totalCustomers": {
+                        "entireTotal": 4,
+                        "selectedMonthTotal": 4,
+                        "change": 100
+                    },
+                    "totalProducts": {
+                        "entireTotal": 1,
+                        "selectedMonthTotal": 1,
+                        "change": 100
+                    }
+                }
+            }
+
+    2. For ADMIN Only
+        GET {{localURL}}/dashboard/recent
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Recent activity retrieved successfully",
+                "data": [
+                    {
+                        "type": "ORDER",
+                        "text": "Order ORD-1783439700000-1234 delivered",
+                        "time": "2026-07-07T16:00:00.000Z"
+                    },
+                    {
+                        "type": "PAYMENT",
+                        "text": "Payment of $4650 paid",
+                        "time": "2026-07-07T16:00:00.000Z"
+                    }
+                ]
+            }
+
+    3. For ADMIN Only
+        GET {{localURL}}/dashboard/orders-chart
+            Authentication
+            Query parameters (optional):
+                type=daily // daily | weekly | monthly
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Orders chart retrieved successfully",
+                "data": [
+                    {
+                        "label": "2026-07-07",
+                        "value": 1
+                    }
+                ]
+            }
+
+    4. For ADMIN Only
+        GET {{localURL}}/dashboard/recent-orders
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Recent orders retrieved successfully",
+                "data": [
+                    {
+                        "id": "6a4d1f5ee46a05bfe8fdcc06",
+                        "createdAt": "2026-07-07T16:00:00.000Z",
+                        "status": "DELIVERED",
+                        "user": {
+                            "id": "6a49138edfcdfd1ed73e30e4",
+                            "name": "Md Towhid"
+                        },
+                        "orderProducts": [
+                            {
+                                "productId": "6a4d1d9fe46a05bfe8fdcc04",
+                                "quantity": 2,
+                                "price": 2295,
+                                "product": {
+                                    "id": "6a4d1d9fe46a05bfe8fdcc04",
+                                    "name": "Wireless Headphone X Updated",
+                                    "Color": {
+                                        "name": "Red"
+                                    },
+                                    "Size": {
+                                        "name": "XL"
+                                    }
+                                }
+                            }
+                        ],
+                        "payments": [
+                            {
+                                "amount": 4650,
+                                "status": "PAID",
+                                "createdAt": "2026-07-07T16:00:00.000Z",
+                                "id": "6a4d1f5ee46a05bfe8fdcc08"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+
+VISITOR Api's =================
+
+    1. POST {{localURL}}/visitor/track
+            req.body: {
+                "sessionId": "session-xyz-12345"
+            }
+            req.headers: {
+                "id": "6a49138edfcdfd1ed73e30e4" // User ID (optional)
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "Visitor tracked successfully",
+                "data": {
+                    "id": "6a4d221fe46a05bfe8fdcc0b",
+                    "sessionId": "session-xyz-12345",
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "createdAt": "2026-07-07T16:30:00.000Z"
+                }
+            }
+
+    2. For ADMIN Only
+        GET {{localURL}}/visitor/total
+            Authentication
+            Query parameters (optional):
+                startDate=2026-07-01
+                endDate=2026-07-07
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Total visitors retrieved successfully",
+                "data": {
+                    "totalVisitors": 15,
+                    "period": {
+                        "start": "2026-07-01T00:00:00.000Z",
+                        "end": "2026-07-07T23:59:59.999Z"
+                    }
+                }
+            }
+
+
+GOOGLE AUTH Api's =================
+
+    1. GET {{localURL}}/googleAuth
+            Query parameters (optional):
+                state=redirectStateValue
+            description: Redirects user to Google OAuth login page.
+
+    2. GET {{localURL}}/googleAuth/callback
+            description: Google OAuth callback endpoint. Generates JWT tokens, sets "accessToken" and "refreshToken" cookies, and redirects the user to the frontend Success/Failure URL with query parameters: e.g., frontendURL/login-success?googleAuth=true&token=ACCESS_TOKEN&role=USER_ROLE
+
+
+BLOG Api's =================
+
+    1. For ADMIN Only
+        POST {{localURL}}/blog
+            Authentication
+            req.body[form-data]: {
+                data: {
+                    "title": "String",
+                    "subTitle": "String (optional)",
+                    "des": "String"
+                },
+                images: [File_1, File_2]
+            }
+            response: {
+                "statusCode": 201,
+                "status": true,
+                "message": "New blog added!",
+                "data": {
+                    "id": "6a4d232fe46a05bfe8fdcc0d",
+                    "title": "Blog Title",
+                    "subTitle": "Blog Subtitle",
+                    "des": "Blog description",
+                    "images": [
+                        "http://localhost:4200/uploads/blog-image-1.png"
+                    ],
+                    "active": true,
+                    "views": 0,
+                    "adminId": "6a49138edfcdfd1ed73e30e4",
+                    "createdAt": "2026-07-07T16:40:00.000Z",
+                    "updatedAt": "2026-07-07T16:40:00.000Z"
+                }
+            }
+
+    2. For ADMIN Only
+        PATCH {{localURL}}/blog/:id
+            Authentication
+            req.body[form-data]: {
+                data: {
+                    "title": "String (optional)",
+                    "subTitle": "String (optional)",
+                    "des": "String (optional)",
+                    "removeImages": ["http://localhost:4200/uploads/blog-image-1.png"]
+                },
+                images: [File_New]
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Blog updated successfully!",
+                "data": {
+                    "id": "6a4d232fe46a05bfe8fdcc0d",
+                    "title": "Updated Blog Title",
+                    "subTitle": "Blog Subtitle",
+                    "des": "Blog description",
+                    "images": [
+                        "http://localhost:4200/uploads/blog-image-new.png"
+                    ],
+                    "active": true,
+                    "views": 0,
+                    "adminId": "6a49138edfcdfd1ed73e30e4",
+                    "createdAt": "2026-07-07T16:40:00.000Z",
+                    "updatedAt": "2026-07-07T16:45:00.000Z"
+                }
+            }
+
+    3. GET {{localURL}}/blog
+            Query parameters (optional):
+                page=1
+                limit=10
+                sortBy=createdAt
+                sortOrder=desc
+                search=Title
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Blog List Found",
+                "data": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10,
+                    "totalPages": 1,
+                    "hasNext": false,
+                    "hasPrev": false,
+                    "blogs": [
+                        {
+                            "id": "6a4d232fe46a05bfe8fdcc0d",
+                            "title": "Updated Blog Title",
+                            "subTitle": "Blog Subtitle",
+                            "des": "Blog description",
+                            "images": [
+                                "http://localhost:4200/uploads/blog-image-new.png"
+                            ],
+                            "views": 0,
+                            "createdAt": "2026-07-07T16:40:00.000Z",
+                            "updatedAt": "2026-07-07T16:45:00.000Z",
+                            "admin": {
+                                "id": "6a49138edfcdfd1ed73e30e4",
+                                "name": "Md Towhid",
+                                "photo": "http://localhost:4200/uploads/photo-1783427538082-264005523.webp"
+                            }
+                        }
+                    ]
+                }
+            }
+
+    4. PATCH {{localURL}}/blog/viewCount/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Blog view count successfully!",
+                "data": {
+                    "views": 1
+                }
+            }
+
+    5. For ADMIN Only
+        GET {{localURL}}/blog/getAllByAdmin
+            Authentication
+            Query parameters (optional):
+                page=1
+                limit=10
+                sortBy=createdAt
+                sortOrder=desc
+                search=Title
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Blog List Found for admin",
+                "data": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10,
+                    "totalPages": 1,
+                    "hasNext": false,
+                    "hasPrev": false,
+                    "blogs": [
+                        {
+                            "id": "6a4d232fe46a05bfe8fdcc0d",
+                            "title": "Updated Blog Title",
+                            "subTitle": "Blog Subtitle",
+                            "des": "Blog description",
+                            "images": [
+                                "http://localhost:4200/uploads/blog-image-new.png"
+                            ],
+                            "views": 1,
+                            "active": true,
+                            "createdAt": "2026-07-07T16:40:00.000Z",
+                            "updatedAt": "2026-07-07T16:45:00.000Z",
+                            "admin": {
+                                "id": "6a49138edfcdfd1ed73e30e4",
+                                "name": "Md Towhid",
+                                "photo": "http://localhost:4200/uploads/photo-1783427538082-264005523.webp"
+                            }
+                        }
+                    ]
+                }
+            }
+
+    6. GET {{localURL}}/blog/:id
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Blog Found",
+                "data": {
+                    "id": "6a4d232fe46a05bfe8fdcc0d",
+                    "title": "Updated Blog Title",
+                    "subTitle": "Blog Subtitle",
+                    "des": "Blog description",
+                    "images": [
+                        "http://localhost:4200/uploads/blog-image-new.png"
+                    ],
+                    "active": true,
+                    "views": 1,
+                    "admin": {
+                        "id": "6a49138edfcdfd1ed73e30e4",
+                        "name": "Md Towhid",
+                        "photo": "http://localhost:4200/uploads/photo-1783427538082-264005523.webp"
+                    }
+                }
+            }
+
+    7. For ADMIN Only
+        DELETE {{localURL}}/blog/:id
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Blog deleted success.",
+                "data": {
+                    "id": "6a4d232fe46a05bfe8fdcc0d",
+                    "title": "Updated Blog Title",
+                    "subTitle": "Blog Subtitle",
+                    "des": "Blog description",
+                    "images": [
+                        "blog-image-new.png"
+                    ],
+                    "active": true,
+                    "views": 1,
+                    "adminId": "6a49138edfcdfd1ed73e30e4",
+                    "createdAt": "2026-07-07T16:40:00.000Z",
+                    "updatedAt": "2026-07-07T16:45:00.000Z"
+                }
+            }
+
+
+OURSTORY Api's =================
+
+    1. For ADMIN Only
+        POST {{localURL}}/ourStory
+            Authentication
+            req.body[form-data]: {
+                data: {
+                    "title": "String (optional)",
+                    "subTitle": "String (optional)"
+                },
+                image: File
+            }
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Our story updated successfully",
+                "data": {
+                    "id": "6a4d22bfe46a05bfe8fdcc0c",
+                    "title": "Our Story Title",
+                    "subTitle": "Our Story Subtitle",
+                    "image": "http://localhost:4200/uploads/story-image.png",
+                    "createdAt": "2026-07-07T16:35:00.000Z",
+                    "updatedAt": "2026-07-07T16:35:00.000Z"
+                }
+            }
+
+    2. GET {{localURL}}/ourStory
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Our story details fetched successfully",
+                "data": {
+                    "id": "6a4d22bfe46a05bfe8fdcc0c",
+                    "title": "Our Story Title",
+                    "subTitle": "Our Story Subtitle",
+                    "image": "http://localhost:4200/uploads/story-image.png",
+                    "createdAt": "2026-07-07T16:35:00.000Z",
+                    "updatedAt": "2026-07-07T16:35:00.000Z"
+                }
+            }
+
+    3. For ADMIN Only
+        DELETE {{localURL}}/ourStory
+            Authentication
+            response: {
+                "statusCode": 200,
+                "status": true,
+                "message": "Our story deleted successfully",
+                "data": {
+                    "id": "6a4d22bfe46a05bfe8fdcc0c",
+                    "title": "Our Story Title",
+                    "subTitle": "Our Story Subtitle",
+                    "image": "story-image.png",
+                    "createdAt": "2026-07-07T16:35:00.000Z",
+                    "updatedAt": "2026-07-07T16:35:00.000Z"
+                }
+            }

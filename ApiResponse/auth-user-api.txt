@@ -1,0 +1,439 @@
+    baseUrl/localUrl = http://localhost:4200/api/v1
+
+    Authentication:
+        req.headers:
+                token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNDkxMzhlZGZjZGZkMWVkNzNlMzBlNCIsImVtYWlsIjoi...
+
+
+AUTH Api's: ============
+
+    1. POST {{localURL}}/auth/register
+        req.body: {
+            "name": "Arif Hossain",
+            "email": "customer@gmail.com",
+            "password": "123456",
+            "role": "CUSTOMER" // "CUSTOMER" | "ADMIN"
+        }
+        resonpse: {
+            "status": true,
+            "message": "Signed Up Successfully.",
+            "data": {
+                "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNGNlMzQyNmZiNTg3ZDYxZjRkNDM4MCIsImVtYWlsIj...",
+                "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNGNlMzQyNmZiNTg3ZDYxZjRkNDM4MCIsImVtYWlsI..."
+            }
+        }
+        Error Response: {
+            "status": false,
+            "message": "Someone already exists with this email. Try another email.",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Someone already exists with this email. Try another email."
+                }
+            ]
+        }
+        Error Response: {
+            "status": false,
+            "message": "Password must be at least 6 characters long",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Password must be at least 6 characters long"
+                }
+            ]
+        }
+
+    2. POST {{localURL}}/auth/login
+        req.body: {
+            "email": "[EMAIL_ADDRESS]",
+            "password": "[PASSWORD]"
+        }
+        response: {
+            "status": true,
+            "message": "Login successful",
+            "data": {
+                "id": "6a4ce3426fb587d61f4d4380",
+                "name": "Arif Hossain",
+                "email": "customer@gmail.com",
+                "password": "$2b$12$vSU6uYE0qehGtr4Y97Z0ie.P5z5D.JKy47ysTMDWqBqoHPndlvN6a",
+                "isEmailVerified": false,
+                "role": "CUSTOMER",
+                "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNGNlMzQyNmZiNTg3ZDYxZjRkNDM4MCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzgzODY5NDQ5LCJleHAiOjE3ODQ0NzQyNDl9.2LWiIOWvcgyPhP3ofzV4GlpPXCDxYCI8KcqE2WaIdjY",
+                "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNGNlMzQyNmZiNTg3ZDYxZjRkNDM4MCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwicm9sZSI6IkNVU1RPTUVSIiwiaWF0IjoxNzgzODY5NDQ5LCJleHAiOjE3ODY0NjE0NDl9.fST1hmCmoq7WE7q1uqC1qZpmpo_U05y2d1SORr5M8TQ"
+            }
+        }
+        error response: {
+            "status": false,
+            "message": "User not found",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "User not found"
+                }
+            ]
+        }
+        error response: {
+            "status": false,
+            "message": "Incorrect credentials!",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Incorrect credentials!"
+                }
+            ]
+        }
+
+    3. POST {{localURL}}/auth/verifyEmail
+        req.body: {
+            "email": "devtowhid486@gmail.com"
+        }
+        response: {
+        "status": true,
+            "message": "OTP sent to your email",
+            "data": {
+                "email": "customer@gmail.com",
+                "expiresAt": "2026-07-07T11:42:48.181Z"
+            }
+        }
+        error response: {
+            "status": false,
+            "message": "No user found with this email",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "No user found with this email"
+                }
+            ]
+        }
+
+    4. POST {{localURL}}/auth/verifyOTP
+        req.body: {
+            "email": "customer@gmail.com",
+            "otp": "987917"
+        }
+        response: {
+            "status": true,
+            "message": "OTP verified successfully",
+            "data": {
+                "email": "customer@gmail.com",
+                "verified": true
+            }
+        }
+        error response: {
+            "status": false,
+            "message": "Invalid OTP",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Invalid OTP"
+                }
+            ]
+        }
+
+    5. POST {{localURL}}/auth/resetPass
+        req.body: {
+            "email": "devtowhid486@gmail.com",
+            "newPassword": "000000"
+        }
+        response: {
+            "status": true,
+            "message": "Password reset successfully",
+            "data": {
+                "email": "customer@gmail.com",
+                "reset": true
+            }
+        }
+        Error Response: {
+            "status": false,
+            "message": "OTP not verified. Please verify first.",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "OTP not verified. Please verify first."
+                }
+            ]
+        }
+        Error Response: {
+            "status": false,
+            "message": "Password must be at least 6 characters long",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Password must be at least 6 characters long"
+                }
+            ]
+        }
+
+    6. POST {{localURL}}/auth/resendOtp
+        req.body: {
+            "email": "customer@gmail.com",
+        }
+        response: {
+            "status": true,
+            "message": "A new OTP has been sent to your email.",
+            "data": {
+                "email": "customer@gmail.com",
+                "otpSent": true
+            }
+        }
+        Error Response: {
+            "status": false,
+            "message": "Email is required",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Email is required"
+                }
+            ]
+        }
+        Error Response: {
+            "status": false,
+            "message": "User not found",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "User not found"
+                }
+            ]
+        }
+        Error Response: {
+            "status": false,
+            "message": "Failed to send OTP. Please try again.",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Failed to send OTP. Please try again."
+                }
+            ]
+        }
+
+    7. POST {{localURL}}/auth/contactFormSubmit
+        req.body: {
+            "name": "Rakib Ullah",
+            "email": "rakib420@gmail.com",
+            "phone": "01477852369",
+            "message": "Testing Message..."
+        }
+        response: {
+            "status": true,
+            "message": "Form submitted successfully",
+            "data": [
+                "developertowhid@gmail.com"
+            ]
+        }
+        Error Response: {
+            "status": false,
+            "message": "Failed to send contact form. Please try again.",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Failed to send contact form. Please try again."
+                }
+            ]
+        }
+
+
+USER Api's: ============
+
+    8. GET {{localURL}}/user?userId= //optional field userId for admin
+        Authentication
+        response: {
+            "status": true,
+            "message": "User Profile Found",
+            "data": {
+                "id": "6a49138edfcdfd1ed73e30e4",
+                "name": "Md Towhid",
+                "email": "developertowhid@gmail.com",
+                "phone": "01829245088",
+                "photo": "http://localhost:4200/uploads/photo-1783427538082-264005523.webp",
+                "lang": "ENG",
+                "dob": null,
+                "role": "ADMIN",
+                "profile": {
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "intro": "INtro 2",
+                    "fullName": "Md Towhid",
+                    "bloodGroup": null,
+                    "gender": null,
+                    "zip": null,
+                    "city": null,
+                    "state": null,
+                    "address": null,
+                    "country": null
+                }
+            }
+        }
+        Error Response: {
+            "status": false,
+            "message": "User Id is missing!",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "User Id is missing!"
+                }
+            ]
+        }
+        Error Response: {
+            "status": false,
+            "message": "User account not found",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "User account not found"
+                }
+            ]
+        }
+
+    9. PATCH {{localURL}}/user/updateProfile
+        Authentication
+        req.body[form-data]: {
+            photo: file(optional)
+            name?: string;
+            phone?: string;
+            intro?: string;
+            bloodGroup?: string;
+            gender?: string; // "Male" | "Female" | "Others"
+            dob?: string; // in MongoDB DateTime
+            zip?: string;
+            city?: string;
+            state?: string;
+            address?: string;
+            country?: string;
+        }
+        response: {
+            "status": true,
+            "message": "Profile updated successfully!",
+            "data": {
+                "id": "6a49138edfcdfd1ed73e30e4",
+                "name": "Md Towhid",
+                "email": "developertowhid@gmail.com",
+                "phone": "01829245088",
+                "photo": "photo-1783427538082-264005523.webp",
+                "lang": "ENG",
+                "dob": null,
+                "role": "ADMIN",
+                "profile": {
+                    "userId": "6a49138edfcdfd1ed73e30e4",
+                    "intro": "INtro 2",
+                    "fullName": "Md Towhid",
+                    "bloodGroup": null,
+                    "gender": null,
+                    "zip": null,
+                    "city": null,
+                    "state": null,
+                    "address": null,
+                    "country": null
+                }
+            }
+        }
+
+    10. PATCH {{localURL}}/user/changePassword
+         Authentication
+         req.body: {
+            "oldPassword": "000000",
+            "newPassword": "123456"
+         }
+         response: {
+            "status": true,
+            "message": "Password Changed!",
+            "data": true
+        }
+         error response: {
+            "status": false,
+            "message": "Incorrect current password!",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Incorrect current password!"
+                }
+            ]
+        }
+        error response: {
+            "status": false,
+            "message": "Password must be at least 6 characters long!",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "Password must be at least 6 characters long!"
+                }
+            ]
+        }
+        error response: {
+            "status": false,
+            "message": "New password cannot be the same as old password!",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "New password cannot be the same as old password!"
+                }
+            ]
+        }
+
+    11. For ADMIN Only
+        GET {{localURL}}/user/customerList?page=1&limit=20&search=&sortOrder=asc // sortOrder: asc | desc
+         Authentication
+         responsse: {
+            "status": true,
+            "message": "User List Found!",
+            "meta": {
+                "total": 4,
+                "page": 1,
+                "limit": 20
+            },
+            "data": [
+                {
+                    "id": "6a4ce7416127b1c6a3dce51c",
+                    "name": "Arif Hossain",
+                    "email": "customerrr@gmail.com",
+                    "phone": null,
+                    "photo": null,
+                    "role": "CUSTOMER",
+                    "joinedDate": "2026-07-07T11:47:13.296Z",
+                    "lastOrderDate": null,
+                    "totalOrders": 0
+                },
+                {
+                    "id": "6a4ce71e4341afe502accd56",
+                    "name": "Arif Hossain",
+                    "email": "customerr@gmail.com",
+                    "phone": null,
+                    "photo": null,
+                    "role": "CUSTOMER",
+                    "joinedDate": "2026-07-07T11:46:38.206Z",
+                    "lastOrderDate": null,
+                    "totalOrders": 0
+                },
+                {
+                    "id": "6a4ce3426fb587d61f4d4380",
+                    "name": "Arif Hossain",
+                    "email": "customer@gmail.com",
+                    "phone": null,
+                    "photo": null,
+                    "role": "CUSTOMER",
+                    "joinedDate": "2026-07-07T11:30:10.645Z",
+                    "lastOrderDate": null,
+                    "totalOrders": 0
+                },
+                {
+                    "id": "6a49138edfcdfd1ed73e30e4",
+                    "name": "Md Towhid",
+                    "email": "developertowhid@gmail.com",
+                    "phone": "01829245088",
+                    "photo": "http://localhost:4200/uploads/photo-1783427836630-480315574.webp",
+                    "role": "ADMIN",
+                    "joinedDate": "2026-07-04T14:07:10.575Z",
+                    "lastOrderDate": "2026-07-07T10:56:40.876Z",
+                    "totalOrders": 2
+                }
+            ]
+        }
+        error response: {
+            "status": false,
+            "message": "No users found",
+            "errors": [
+                {
+                    "path": "",
+                    "message": "No users found"
+                }
+            ]
+        }

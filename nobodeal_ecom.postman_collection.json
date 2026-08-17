@@ -1,0 +1,3732 @@
+{
+  "info": {
+    "_postman_id": "2111937e-2727-4c10-8ef2-b33f469964c4",
+    "name": "nobodeal_ecom",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56385533",
+    "_collection_link": "https://go.postman.co/collection/56385533-2111937e-2727-4c10-8ef2-b33f469964c4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "auth",
+              "item": [
+                {
+                  "name": "signUp",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"name\": \"Arif Hossain\",\r\n    \"email\": \"customer33@gmail.com\",\r\n    \"password\": \"12345\",\r\n    \"role\": \"CUSTOMER\" // \"CUSTOMER\" | \"ADMIN\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/auth/register",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "register"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "login",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"customer@gmail.com\",\r\n    \"password\": \"1234564\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/auth/login",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "verifyEmail",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"customer@gmail.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/auth/verifyEmail",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "verifyEmail"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "verifyOTP",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"customer@gmail.com\",\r\n    \"otp\": \"987917\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/auth/verifyOTP",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "verifyOTP"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "resetPass",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"devtowhid486@gmail.com\",\r\n    \"newPassword\": \"000000\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/auth/resetPass",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "resetPass"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "contactFormSubmit",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"name\": \"Rakib Ullah\",\r\n    \"email\": \"rakib420@gmail.com\",\r\n    \"phone\": \"01477852369\",\r\n    \"message\": \"Testing Message...\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/auth/contactFormSubmit",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "contactFormSubmit"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "user",
+              "item": [
+                {
+                  "name": "getProfile",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/user",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "user"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "updateProfile",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Md Towhid\",\n \"phone\": \"01829245088\",\n \"intro\": \"INtro 2\",\n \"gender\": \"Male\"\n}",
+                          "type": "text",
+                          "uuid": "6c160303-d3fa-4598-b7cf-6abe4fd71d9d"
+                        },
+                        {
+                          "key": "photo",
+                          "type": "file",
+                          "uuid": "b6d311b7-2be2-4b5f-94e8-ef594c9b95fc",
+                          "src": "/D:/Programming/Project/Production/Nobodeal/ecommerce/asset/product/student_kit_1.webp",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/user/updateProfile\\",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "user",
+                        "updateProfile",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "changePassword",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"oldPassword\": \"123456\",\r\n    \"newPassword\": \"12345678\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/user/changePassword",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "user",
+                        "changePassword"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "customerList",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/user/customerList?page=1&limit=20&search=jal&sortOrder=",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "user",
+                        "customerList"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "key": "search",
+                          "value": "jal"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "",
+                          "description": "\"desc\" || \"asc\""
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "category",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "type": "text",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": "Category 2",
+                          "disabled": true
+                        },
+                        {
+                          "key": "des",
+                          "value": "Hello",
+                          "type": "text",
+                          "uuid": "a8b13d1d-2351-4b90-90b8-ff78c2e5d2f2"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "c4a1cd5e-413d-47ab-b53c-d994c3f8c2c4",
+                          "src": "/D:/Programming/Project/Production/Nobodeal/ecommerce/asset/20250423122047image_190x230_media_290.png"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/category/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "category",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text",
+                        "disabled": true
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/category",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "category"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/category/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "category",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4a6a2bdfe6e7a891d1527c"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Category 2\",\n \"des\": \"This description is for category 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37",
+                          "disabled": true
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "src": "/D:/Programming/Project/Production/Nobodeal/ecommerce/asset/20260131131257image_190x230_media_496.png",
+                          "disabled": true
+                        },
+                        {
+                          "key": "name",
+                          "value": "Combo",
+                          "type": "text",
+                          "uuid": "668c1640-8fcb-4162-95f9-1fa749739c86",
+                          "disabled": true
+                        },
+                        {
+                          "key": "des",
+                          "value": "Hi",
+                          "type": "text",
+                          "uuid": "4dd95d23-71e3-4e56-b81d-a0a590236794"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/category/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "category",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4a6a2bdfe6e7a891d1527c"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/category/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "category",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4d1298714130d84d528d91"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "subcategory",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "type": "text",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": "Bold Wines"
+                        },
+                        {
+                          "key": "des",
+                          "value": "description of bold wines",
+                          "type": "text",
+                          "uuid": "a8b13d1d-2351-4b90-90b8-ff78c2e5d2f2"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "c4a1cd5e-413d-47ab-b53c-d994c3f8c2c4",
+                          "src": "/C:/Users/devel/Pictures/Rectangle 208 (2).webp"
+                        },
+                        {
+                          "key": "categoryId",
+                          "value": "6a4a6a2bdfe6e7a891d1527c",
+                          "type": "text",
+                          "uuid": "8c4a8076-4741-4aef-8c4d-181df373b00b"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subcategory/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subcategory",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subcategory",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subcategory"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":categoryId",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subcategory/category/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subcategory",
+                        "category",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": ""
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "src": "/C:/Users/devel/Pictures/Screenshots/Screenshot 2025-11-26 080854.png"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subcategory/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subcategory",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4d17d3e46a05bfe8fdcbfd"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Bold Wines",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": null
+                        },
+                        {
+                          "key": "des",
+                          "value": "faasd",
+                          "type": "text",
+                          "uuid": "a7a8656e-76a3-4cd7-ad3c-b39bf9ff30b9"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subcategory/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subcategory",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4d17d3e46a05bfe8fdcbfd"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\",\n \"des\": \"This description is for brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subcategory/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subcategory",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4d17d3e46a05bfe8fdcbff"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "brand",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Realme",
+                          "type": "text",
+                          "uuid": "78ec12bb-5755-4b7b-abbf-4f212e99ec3e"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "src": "/D:/Programming/Project/Production/Nobodeal/ecommerce/asset/brand/realme.svg"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/brand/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "brand",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/brand/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "brand",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "src": "/C:/Users/devel/Pictures/Screenshots/Screenshot 2025-11-26 080854.png"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/brand/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "brand",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4ba2191e23e4e3e3f23320"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Oraimo Yes",
+                          "type": "text",
+                          "uuid": "72faffe6-ab4c-41a8-aeef-d8e2a18293cc"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "c94fb4a7-acae-4d99-aaa8-d158e241284c",
+                          "src": "/D:/Programming/Project/Production/Nobodeal/ecommerce/asset/brand/oraimo.webp"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/brand/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "brand",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4ba2191e23e4e3e3f23320"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\",\n \"des\": \"This description is for brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/brand/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "brand",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4ba2fb12114c095c7a692c"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "size",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"name\": \"200gm\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/size/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/size/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/size/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4ba92ab99cc18bd114db94"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"name\": \"140 ml\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/size/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4ba92ab99cc18bd114db94"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\",\n \"des\": \"This description is for brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/size/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4bab3455a1c223bf3790cd"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "color",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"name\": \"Purple\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/color/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "color",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/color/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "color",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/color/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "color",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4babf155a1c223bf3790d3"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"name\": \"Purplea\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/color/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "color",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4babf155a1c223bf3790d3"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\",\n \"des\": \"This description is for brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/color/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "color",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4babf155a1c223bf3790d3"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "product",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "images",
+                          "type": "file",
+                          "uuid": "d08e1e53-010b-402f-89ed-57c1c9987496",
+                          "src": [
+                            "/D:/Programming/Project/Production/Nobodeal/ecommerce/asset/product/student_kit_1.webp",
+                            "/D:/Programming/Project/Production/Nobodeal/ecommerce/asset/product/student_kit_2.webp"
+                          ]
+                        },
+                        {
+                          "key": "data",
+                          "value": "{\n    \"name\": \"Student Kit\",\n    \"shortDes\":  \"hi\",\n    \"specification\": \"hello\",\n    \"des\": \"Hooeiroeiu.\",\n    \"colorId\": \"6a4babb955a1c223bf3790ce\",\n    \"price\": \"3300\",\n    \"shippingFee\": \"60\",\n    \"discount\": true,\n    \"discountPercent\": \"10\",\n    \"stock\": true,\n    \"quantity\": \"25\",\n    \"categoryId\": \"6a4a6a2bdfe6e7a891d1527c\",\n    \"brandId\": \"6a4ba2da12114c095c7a692a\"\n}",
+                          "type": "text",
+                          "uuid": "4c5db16c-1f38-46ac-b425-fd5ca08cd158"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/product/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "product",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "get All",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "images",
+                          "type": "file",
+                          "uuid": "d08e1e53-010b-402f-89ed-57c1c9987496",
+                          "src": [
+                            "/C:/Users/devel/Pictures/wine shop images/istockphoto-1432122645-612x612.jpg",
+                            "/C:/Users/devel/Pictures/wine shop images/pexels-photo-2912108.webp",
+                            "/C:/Users/devel/Pictures/wine shop images/still-life-red-wine-bottle-glass-10764836.webp"
+                          ]
+                        },
+                        {
+                          "key": "data",
+                          "value": "{\n    \"name\": \"Keru 999\",\n    \"des\": \"Alcohol is good for health. It give us strenght both mental and slightly physically\",\n    \"size\": \"500ml\",\n    \"tag\": \"Hot\",\n    \"price\": \"150\",\n    \"discount\": true,\n    \"discountPercent\": \"15\",\n    \"stock\": true,\n    \"quantity\": \"20\"\n}",
+                          "type": "text",
+                          "uuid": "4c5db16c-1f38-46ac-b425-fd5ca08cd158"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/product",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "product"
+                      ],
+                      "query": [
+                        {
+                          "key": "sortBy",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "categoryId",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "brandId",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "minPrice",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "maxPrice",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "inStock",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "hasDiscount",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAllByAdmin",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "images",
+                          "type": "file",
+                          "uuid": "d08e1e53-010b-402f-89ed-57c1c9987496",
+                          "src": [
+                            "/C:/Users/devel/Pictures/wine shop images/istockphoto-1432122645-612x612.jpg",
+                            "/C:/Users/devel/Pictures/wine shop images/pexels-photo-2912108.webp",
+                            "/C:/Users/devel/Pictures/wine shop images/still-life-red-wine-bottle-glass-10764836.webp"
+                          ]
+                        },
+                        {
+                          "key": "data",
+                          "value": "{\n    \"name\": \"Keru 999\",\n    \"des\": \"Alcohol is good for health. It give us strenght both mental and slightly physically\",\n    \"size\": \"500ml\",\n    \"tag\": \"Hot\",\n    \"price\": \"150\",\n    \"discount\": true,\n    \"discountPercent\": \"15\",\n    \"stock\": true,\n    \"quantity\": \"20\"\n}",
+                          "type": "text",
+                          "uuid": "4c5db16c-1f38-46ac-b425-fd5ca08cd158"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/product/getAllByAdmin?minPrice=&maxPrice=",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "product",
+                        "getAllByAdmin"
+                      ],
+                      "query": [
+                        {
+                          "key": "sortBy",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "categoryId",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "brandId",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "minPrice",
+                          "value": ""
+                        },
+                        {
+                          "key": "maxPrice",
+                          "value": ""
+                        },
+                        {
+                          "key": "inStock",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "hasDiscount",
+                          "value": "",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "images",
+                          "type": "file",
+                          "uuid": "d08e1e53-010b-402f-89ed-57c1c9987496",
+                          "src": "/C:/Users/devel/Pictures/wine shop images/images.jpg"
+                        },
+                        {
+                          "key": "data",
+                          "value": "{\n    \"name\": \"Fortress Elegance\",\n    \"shortDes\": \"This short des of Fortress wine\",\n    \"des\": \"Alcohol is good for health. It give us strenght both mental and slightly physically\",\n    \"size\": \"500ml\",\n    \"price\": \"130\",\n    \"discount\": false,\n    \"discountPercent\": \"0\",\n    \"stock\": true,\n    \"quantity\": \"15\",\n    \"categoryId\": \"694a22ab0166c07e027f0d3c\",\n    \"brandId\": \"694a28c24563d23c3f47065c\",\n    \"removeImages\": [\"images-1766468352224-819988289.webp\"]\n}",
+                          "type": "text",
+                          "uuid": "4c5db16c-1f38-46ac-b425-fd5ca08cd158"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/product/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "product",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4bd9ca1f15606f97346430"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "images",
+                          "type": "file",
+                          "uuid": "d08e1e53-010b-402f-89ed-57c1c9987496",
+                          "src": "/C:/Users/devel/Pictures/wine shop images/images.jpg",
+                          "disabled": true
+                        },
+                        {
+                          "key": "data",
+                          "value": "{\n    \"shippingFee\": \"80\"\n}",
+                          "type": "text",
+                          "uuid": "4c5db16c-1f38-46ac-b425-fd5ca08cd158"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/product/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "product",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4bd9ca1f15606f97346430"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "images",
+                          "type": "file",
+                          "uuid": "d08e1e53-010b-402f-89ed-57c1c9987496",
+                          "src": "/C:/Users/devel/Pictures/wine shop images/images.jpg"
+                        },
+                        {
+                          "key": "data",
+                          "value": "{\n    \"name\": \"Fortress Elegance\",\n    \"shortDes\": \"This short des of Fortress wine\",\n    \"des\": \"Alcohol is good for health. It give us strenght both mental and slightly physically\",\n    \"size\": \"500ml\",\n    \"price\": \"130\",\n    \"discount\": false,\n    \"discountPercent\": \"0\",\n    \"stock\": true,\n    \"quantity\": \"15\",\n    \"categoryId\": \"694a22ab0166c07e027f0d3c\",\n    \"brandId\": \"694a28c24563d23c3f47065c\",\n    \"removeImages\": [\"images-1766468352224-819988289.webp\"]\n}",
+                          "type": "text",
+                          "uuid": "4c5db16c-1f38-46ac-b425-fd5ca08cd158"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/product/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "product",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694a2b004563d23c3f470663"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "review",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"rating\": 5,\r\n    \"des\": \"Nice product\",\r\n    \"orderId\": \"69533e4e2544b8b120b868b9\",\r\n    \"productId\": \"694e0f483be44688d00bc841\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/review/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "review",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/review/:productId",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "review",
+                        ":productId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productId",
+                          "value": "694e0f563be44688d00bc842"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll admin",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/review/getAll",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "review",
+                        "getAll"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "isReviewed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "src": "/C:/Users/devel/Pictures/Screenshots/Screenshot 2025-11-26 080854.png"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/review/isReviewed/:productId",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "review",
+                        "isReviewed",
+                        ":productId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productId",
+                          "value": "694e0f563be44688d00bc842"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "src": "/C:/Users/devel/Pictures/Screenshots/Screenshot 2025-11-26 080854.png"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/size/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694f6a9c0b32724d936aa18a"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"name\": \"140 ml\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/size/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694f6a9c0b32724d936aa18a"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "data",
+                          "value": "{\n \"name\": \"Brand 3\",\n \"des\": \"This description is for brand 3\"\n}",
+                          "type": "text",
+                          "uuid": "f84f9151-de7c-452d-9484-07da73453b37"
+                        },
+                        {
+                          "key": "img",
+                          "type": "file",
+                          "uuid": "426e4028-1651-434c-a3d6-93cf8666374a",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/size/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "size",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694f6a9c0b32724d936aa18a"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "wishlist",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"productId\":\"6a4bd9ca1f15606f97346430\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/wishlist/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "wishlist",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "create",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"productId\":\"6a4bd9ca1f15606f97346430\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{localURL}}/wishlist/",
+                          "host": [
+                            "{{localURL}}"
+                          ],
+                          "path": [
+                            "wishlist",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Vary",
+                          "value": "Origin"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "true"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                          "key": "Cross-Origin-Opener-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Cross-Origin-Resource-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Origin-Agent-Cluster",
+                          "value": "?1"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "no-referrer"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-DNS-Prefetch-Control",
+                          "value": "off"
+                        },
+                        {
+                          "key": "X-Download-Options",
+                          "value": "noopen"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "SAMEORIGIN"
+                        },
+                        {
+                          "key": "X-Permitted-Cross-Domain-Policies",
+                          "value": "none"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "0"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "6000"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "5996"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Mon, 06 Jul 2026 16:40:06 GMT"
+                        },
+                        {
+                          "key": "X-RateLimit-Reset",
+                          "value": "1783356751"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "242"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"status\": true,\n    \"message\": \"New wish list added!\",\n    \"data\": {\n        \"id\": \"6a4bda661f15606f97346431\",\n        \"productId\": \"6a4bd9ca1f15606f97346430\",\n        \"userId\": \"6a49138edfcdfd1ed73e30e4\",\n        \"createdAt\": \"2026-07-06T16:40:06.255Z\",\n        \"updatedAt\": \"2026-07-06T16:40:06.255Z\"\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "getAll",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/wishlist/?page=1&limit=10",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "wishlist",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "getAll",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{localURL}}/wishlist/",
+                          "host": [
+                            "{{localURL}}"
+                          ],
+                          "path": [
+                            "wishlist",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "1",
+                              "disabled": true
+                            },
+                            {
+                              "key": "limit",
+                              "value": "3",
+                              "disabled": true
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Vary",
+                          "value": "Origin"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "true"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                          "key": "Cross-Origin-Opener-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Cross-Origin-Resource-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Origin-Agent-Cluster",
+                          "value": "?1"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "no-referrer"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-DNS-Prefetch-Control",
+                          "value": "off"
+                        },
+                        {
+                          "key": "X-Download-Options",
+                          "value": "noopen"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "SAMEORIGIN"
+                        },
+                        {
+                          "key": "X-Permitted-Cross-Domain-Policies",
+                          "value": "none"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "0"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "6000"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "5997"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Mon, 06 Jul 2026 16:39:36 GMT"
+                        },
+                        {
+                          "key": "X-RateLimit-Reset",
+                          "value": "1783356751"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "603"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"status\": false,\n    \"message\": \"No products found in your wishlist\",\n    \"errors\": [\n        {\n            \"path\": \"\",\n            \"message\": \"No products found in your wishlist\"\n        }\n    ],\n    \"err\": {\n        \"statusCode\": 404\n    },\n    \"stack\": \"Error: No products found in your wishlist\\n    at Object.getAll (D:\\\\Programming\\\\Project\\\\Production\\\\Nobodeal\\\\ecommerce\\\\backend\\\\src\\\\app\\\\modules\\\\wishList\\\\wishList.service.ts:73:11)\\n    at D:\\\\Programming\\\\Project\\\\Production\\\\Nobodeal\\\\ecommerce\\\\backend\\\\src\\\\app\\\\modules\\\\wishList\\\\wishList.controller.ts:23:20\\n    at D:\\\\Programming\\\\Project\\\\Production\\\\Nobodeal\\\\ecommerce\\\\backend\\\\src\\\\app\\\\shared\\\\catchAsync.ts:6:7\"\n}"
+                    },
+                    {
+                      "name": "getAll",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{localURL}}/wishlist/?page=1&limit=10",
+                          "host": [
+                            "{{localURL}}"
+                          ],
+                          "path": [
+                            "wishlist",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Vary",
+                          "value": "Origin"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "true"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                          "key": "Cross-Origin-Opener-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Cross-Origin-Resource-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Origin-Agent-Cluster",
+                          "value": "?1"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "no-referrer"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-DNS-Prefetch-Control",
+                          "value": "off"
+                        },
+                        {
+                          "key": "X-Download-Options",
+                          "value": "noopen"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "SAMEORIGIN"
+                        },
+                        {
+                          "key": "X-Permitted-Cross-Domain-Policies",
+                          "value": "none"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "0"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "6000"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "5999"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Mon, 06 Jul 2026 16:47:29 GMT"
+                        },
+                        {
+                          "key": "X-RateLimit-Reset",
+                          "value": "1783357350"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "527"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"status\": true,\n    \"message\": \"Wish list found\",\n    \"meta\": {\n        \"total\": 1,\n        \"page\": 1,\n        \"limit\": 10\n    },\n    \"data\": [\n        {\n            \"id\": \"6a4bda661f15606f97346431\",\n            \"productId\": \"6a4bd9ca1f15606f97346430\",\n            \"createdAt\": \"2026-07-06T16:40:06.255Z\",\n            \"product\": {\n                \"id\": \"6a4bd9ca1f15606f97346430\",\n                \"name\": \"Student Kit\",\n                \"images\": [\n                    \"images-1783355850395-545122393.webp\",\n                    \"images-1783355850396-768559619.webp\"\n                ],\n                \"price\": \"3300\",\n                \"discountPercent\": \"10\",\n                \"discount\": true,\n                \"category\": {\n                    \"id\": \"6a4a6a2bdfe6e7a891d1527c\",\n                    \"name\": \"Combo\"\n                },\n                \"brand\": {\n                    \"id\": \"6a4ba2da12114c095c7a692a\",\n                    \"name\": \"Huawei\"\n                }\n            }\n        }\n    ]\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": ":id",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"productId\":\"694a2b344563d23c3f470664\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/wishlist/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "wishlist",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694b4382329094352d827b7f"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"productId\":\"694a2b344563d23c3f470664\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/wishlist/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "wishlist",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694b4382329094352d827b7f"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "cart",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"productId\":\"6a4bd9ca1f15606f97346430\",\r\n    \"quantity\": \"2\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/cart/",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "getAll",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "page",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "1a4ee39d-2b98-4ac2-b261-b7475db3c46a",
+                          "disabled": true
+                        },
+                        {
+                          "key": "limit",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "5e3f7fc2-ca5c-4d11-ac1c-8c38ab68a798",
+                          "disabled": true
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/cart/?page&limit",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": null
+                        },
+                        {
+                          "key": "limit",
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "getAll",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "token",
+                            "value": "{{adminToken}}",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "page",
+                              "value": "",
+                              "type": "text",
+                              "uuid": "1a4ee39d-2b98-4ac2-b261-b7475db3c46a",
+                              "disabled": true
+                            },
+                            {
+                              "key": "limit",
+                              "value": "",
+                              "type": "text",
+                              "uuid": "5e3f7fc2-ca5c-4d11-ac1c-8c38ab68a798",
+                              "disabled": true
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{localURL}}/cart/?page&limit",
+                          "host": [
+                            "{{localURL}}"
+                          ],
+                          "path": [
+                            "cart",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": null
+                            },
+                            {
+                              "key": "limit",
+                              "value": null
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Vary",
+                          "value": "Origin"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "true"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                          "key": "Cross-Origin-Opener-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Cross-Origin-Resource-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Origin-Agent-Cluster",
+                          "value": "?1"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "no-referrer"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-DNS-Prefetch-Control",
+                          "value": "off"
+                        },
+                        {
+                          "key": "X-Download-Options",
+                          "value": "noopen"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "SAMEORIGIN"
+                        },
+                        {
+                          "key": "X-Permitted-Cross-Domain-Policies",
+                          "value": "none"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "0"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "6000"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "5999"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Mon, 06 Jul 2026 17:12:52 GMT"
+                        },
+                        {
+                          "key": "X-RateLimit-Reset",
+                          "value": "1783358873"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "969"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"status\": true,\n    \"message\": \"Cart list found\",\n    \"meta\": {\n        \"total\": 1,\n        \"page\": 1,\n        \"limit\": 10\n    },\n    \"data\": {\n        \"carts\": [\n            {\n                \"id\": \"6a4bde648d4cdafb5a299ee6\",\n                \"quantity\": \"2\",\n                \"createdAt\": \"2026-07-06T16:57:08.412Z\",\n                \"product\": {\n                    \"id\": \"6a4bd9ca1f15606f97346430\",\n                    \"name\": \"Student Kit\",\n                    \"images\": [\n                        \"images-1783355850395-545122393.webp\",\n                        \"images-1783355850396-768559619.webp\"\n                    ],\n                    \"price\": \"3300\",\n                    \"discountPercent\": \"10\",\n                    \"discount\": true,\n                    \"shippingFee\": \"80\",\n                    \"Size\": null,\n                    \"Color\": {\n                        \"id\": \"6a4babb955a1c223bf3790ce\",\n                        \"name\": \"Black\",\n                        \"createdAt\": \"2026-07-06T13:20:57.645Z\",\n                        \"updatedAt\": \"2026-07-06T13:20:57.645Z\"\n                    },\n                    \"category\": {\n                        \"id\": \"6a4a6a2bdfe6e7a891d1527c\",\n                        \"name\": \"Combo\"\n                    },\n                    \"brand\": {\n                        \"id\": \"6a4ba2da12114c095c7a692a\",\n                        \"name\": \"Huawei\",\n                        \"img\": \"img-1783341786328-261575605.jpg\"\n                    }\n                },\n                \"priceInfo\": {\n                    \"unitPrice\": 3300,\n                    \"discountPercent\": 10,\n                    \"discountAmount\": 330,\n                    \"shippingFee\": 80,\n                    \"finalPrice\": 2970,\n                    \"itemTotal\": 6020\n                }\n            }\n        ],\n        \"summary\": {\n            \"subtotal\": 6600,\n            \"totalDiscount\": 660,\n            \"totalItems\": 1,\n            \"totalQuantity\": 2,\n            \"totalShippingFee\": 80,\n            \"estimatedTotal\": 6020\n        }\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": ":id",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"productId\":\"694a2b344563d23c3f470664\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/cart/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694b62c79239fca3234227a2"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{userToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"productId\":\"694e0f483be44688d00bc841\",\r\n    \"quantity\": \"3\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/cart/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "69533f822544b8b120b868be"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"productId\":\"694a2b344563d23c3f470664\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/cart/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694b5c9945951e5dfb0d8b99"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Order",
+              "item": [
+                {
+                  "name": "createOrder",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    // \"frontendCartItems\": [\r\n    //     {\r\n    //         \"productId\": \"6a4bd9ca1f15606f97346430\",\r\n    //         \"quantity\": 6\r\n    //     }\r\n    // ],\r\n    \"shippingDetails\": {\r\n        \"name\": \"towhid\",\r\n        \"email\": \"devtowhid486@gmail.com\",\r\n        \"phone\": \"01720556088\",\r\n        \"address\": \"Banani Dhaka\",\r\n        \"city\": \"Dhaka\",\r\n        \"state\": \"Dhaka\",\r\n        \"country\": \"Bangladesh\",\r\n        \"zipCode\": \"1226\",\r\n        \"currency\": \"BDT\",\r\n        \"paymentMethod\": \"COD\"\r\n    }\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/order/createOrder",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "order",
+                        "createOrder"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "allOrder",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "page",
+                          "value": "1",
+                          "type": "text",
+                          "uuid": "4f308972-122b-4906-9b0d-929e8e997589"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20",
+                          "type": "text",
+                          "uuid": "a7b64dec-85fa-4849-bc15-f0412b9a6c9a"
+                        },
+                        {
+                          "key": "sortBy",
+                          "value": "createdAt",
+                          "type": "text",
+                          "uuid": "9fd30616-cf19-42e7-ba58-fc4c316f09fe"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "desc",
+                          "type": "text",
+                          "uuid": "e0abd255-2db7-4696-9dd4-b0adeccc5e09"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/order/allOrder?page=1&limit=10&sortOrder=asc&status=DELIVERED",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "order",
+                        "allOrder"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "asc"
+                        },
+                        {
+                          "key": "status",
+                          "value": "DELIVERED",
+                          "description": "PENDING | DISPATCHED | DELIVERED | CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "allOrderAdmin",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "page",
+                          "value": "1",
+                          "type": "text",
+                          "uuid": "4f308972-122b-4906-9b0d-929e8e997589"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "20",
+                          "type": "text",
+                          "uuid": "a7b64dec-85fa-4849-bc15-f0412b9a6c9a"
+                        },
+                        {
+                          "key": "sortBy",
+                          "value": "createdAt",
+                          "type": "text",
+                          "uuid": "9fd30616-cf19-42e7-ba58-fc4c316f09fe"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "desc",
+                          "type": "text",
+                          "uuid": "e0abd255-2db7-4696-9dd4-b0adeccc5e09"
+                        },
+                        {
+                          "key": "status",
+                          "value": "PENDING",
+                          "description": "PENDING | DISPATCHED | DELIVERED | CANCELLED",
+                          "type": "text",
+                          "uuid": "12ce929a-c69c-4521-9942-91a413b0f7b1"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/order/allOrderAdmin?page=1&limit=10&sortOrder=asc&status=PENDING",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "order",
+                        "allOrderAdmin"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "asc"
+                        },
+                        {
+                          "key": "status",
+                          "value": "PENDING"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id/details",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"shippingDetails\": {\r\n        \"name\": \"towhid\",\r\n        \"email\": \"devtowhid486@gmail.com\",\r\n        \"phone\": \"01720556088\",\r\n        \"address\": \"Banani Dhaka\"\r\n    },\r\n    \"paymentMethod\": \"CARD\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/order/:id/details",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "order",
+                        ":id",
+                        "details"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "694f5bf048ca15084557475b"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "/:id/status",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"status\": \"DELIVERED\" //PENDING | DISPATCHED | DELIVERED | CANCELLED\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/order/status/:id;",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "order",
+                        "status",
+                        ":id;"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id;",
+                          "value": "6a4be43fa49e2ce2b91e143e"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "payment",
+              "item": [
+                {
+                  "name": "history",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/payment/history?page=1&limit=10&sortOrder=asc&status=PAID",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "history"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "asc"
+                        },
+                        {
+                          "key": "status",
+                          "value": "PAID",
+                          "description": "PENDING | PAID | CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "adminHistory",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/payment/adminHistory?page=1&limit=10&sortOrder=asc&status=PAID",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "adminHistory"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "asc"
+                        },
+                        {
+                          "key": "status",
+                          "value": "PAID",
+                          "description": "PENDING | PAID | CANCELLED"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": ":id",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/payment/:id",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "payment",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "6a4be440a49e2ce2b91e1440"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "subscriber",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"test01@gmail.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subscriber",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subscriber"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "all",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"garbagevalue01@gmail.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/subscriber/?page=1&limit=14&sortOrder=asc&search",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "subscriber",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "14"
+                        },
+                        {
+                          "key": "sortOrder",
+                          "value": "asc",
+                          "description": "asc || desc"
+                        },
+                        {
+                          "key": "search",
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "visitor",
+              "item": [
+                {
+                  "name": "track",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"sessionId\": \"c76529f2-398f-4965-aa6d-341b02da08dc\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/visitor/track",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "visitor",
+                        "track"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "total visitor",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{localURL}}/visitor/total?startDate=202434sdffad&endDate=2455645ewrf",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "visitor",
+                        "total"
+                      ],
+                      "query": [
+                        {
+                          "key": "startDate",
+                          "value": "202434sdffad"
+                        },
+                        {
+                          "key": "endDate",
+                          "value": "2455645ewrf"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "dashboard",
+              "item": [
+                {
+                  "name": "stats",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/dashboard/stats?month=06&year=2026",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "stats"
+                      ],
+                      "query": [
+                        {
+                          "key": "month",
+                          "value": "06"
+                        },
+                        {
+                          "key": "year",
+                          "value": "2026"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "recentActivity",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/dashboard/recent",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "recent"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "orders-chart",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/dashboard/orders-chart?types=monthly",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "orders-chart"
+                      ],
+                      "query": [
+                        {
+                          "key": "type",
+                          "value": "daily",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "types",
+                          "value": "weekly",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "types",
+                          "value": "monthly",
+                          "description": "\"daily\" | \"weekly\" | \"monthly\""
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "recent-orders",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "token",
+                        "value": "{{adminToken}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{localURL}}/dashboard/recent-orders",
+                      "host": [
+                        "{{localURL}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "recent-orders"
+                      ],
+                      "query": [
+                        {
+                          "key": "type",
+                          "value": "daily",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": "types",
+                          "value": "weekly",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "localURL",
+      "value": ""
+    },
+    {
+      "key": "liveURL",
+      "value": ""
+    },
+    {
+      "key": "userToken",
+      "value": ""
+    },
+    {
+      "key": "adminToken",
+      "value": ""
+    }
+  ]
+}
