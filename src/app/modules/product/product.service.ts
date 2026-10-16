@@ -12,6 +12,7 @@ const create = async (
     name: string;
     shortDes: string;
     des?: string;
+    aff_link?: string;
     specification?: string;
     images: string[] | any;
     videos?: string[] | any;
@@ -97,6 +98,7 @@ const create = async (
       sku: SKU,
       shortDes: payload.shortDes,
       des: payload.des,
+      aff_link: payload.aff_link || null,
       specification: payload.specification,
       images: payload.images,
       videos: videos,
@@ -145,6 +147,7 @@ interface UpdateProductPayload {
   name?: string;
   shortDes?: string;
   des?: string;
+  aff_link?: string;
   specification?: string;
   images?: string[]; // Should be array of strings
   videos?: string[]; // Should be array of strings, max 3

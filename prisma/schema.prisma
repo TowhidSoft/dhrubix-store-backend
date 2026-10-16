@@ -180,6 +180,7 @@ model Product {
   sku             String   @unique
   shortDes        String?
   des             String?
+  aff_link        String?
   specification   String?
   images          String[]
   videos          String[]
