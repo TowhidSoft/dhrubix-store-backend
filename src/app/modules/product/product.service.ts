@@ -12,7 +12,6 @@ const create = async (
     name: string;
     shortDes: string;
     des?: string;
-    aff_link?: string;
     specification?: string;
     images: string[] | any;
     videos?: string[] | any;
@@ -23,12 +22,14 @@ const create = async (
     subcategoryId: string;
     brandId: string;
     tag?: string;
-    price: string;
+    price?: string;
     shippingFee?: string;
     discount?: boolean;
     discountPercent?: string | any;
     stock?: boolean;
-    quantity: string;
+    quantity?: string;
+    affiliateItem?: boolean;
+    affiliateLink?: string | null;
   },
 ) => {
   if (!adminId) {
@@ -90,6 +91,21 @@ const create = async (
   if (videos.length + videoUrls.length > 3) {
     throw new ApiError(httpStatus.BAD_REQUEST, "A product can have a maximum of 3 videos (uploads + external links combined)!");
   }
+  if (payload.affiliateItem !== undefined && typeof payload.affiliateItem !== "boolean") {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Affiliate item must be true or false!");
+  }
+  if (
+    !payload.affiliateItem &&
+    (!payload.price?.trim() || !payload.quantity?.trim())
+  ) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Price and quantity are required for non-affiliate products!");
+  }
+  if (payload.affiliateItem && !payload.affiliateLink) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Affiliate products require an affiliate link!");
+  }
+  if (payload.affiliateItem && !isHttpUrl(payload.affiliateLink)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Affiliate link must be a valid HTTP or HTTPS URL!");
+  }
 
   const SKU = SKUGenerator()
   const product = await prisma.product.create({
@@ -98,18 +114,19 @@ const create = async (
       sku: SKU,
       shortDes: payload.shortDes,
       des: payload.des,
-      aff_link: payload.aff_link || null,
       specification: payload.specification,
       images: payload.images,
       videos: videos,
       videoUrls: videoUrls,
       tag: payload.tag,
-      price: payload.price,
+      price: payload.price || "0",
       shippingFee: payload.shippingFee,
       discount: payload.discount,
       discountPercent: payload.discountPercent,
       stock: payload.stock,
-      quantity: payload.quantity,
+      quantity: payload.quantity || "0",
+      affiliateItem: payload.affiliateItem ?? false,
+      affiliateLink: payload.affiliateItem ? payload.affiliateLink : null,
       ...(payload.sizeId && {
         Size: {
           connect: { id: payload.sizeId }
@@ -147,7 +164,6 @@ interface UpdateProductPayload {
   name?: string;
   shortDes?: string;
   des?: string;
-  aff_link?: string;
   specification?: string;
   images?: string[]; // Should be array of strings
   videos?: string[]; // Should be array of strings, max 3
@@ -166,7 +182,20 @@ interface UpdateProductPayload {
   stock?: boolean;
   quantity?: string;
   removeImages?: string[]; // Should be array of image URLs to remove
+  affiliateItem?: boolean;
+  affiliateLink?: string | null;
 }
+
+const isHttpUrl = (value?: string | null): boolean => {
+  if (typeof value !== "string" || !value) return false;
+
+  try {
+    const protocol = new URL(value).protocol;
+    return protocol === "http:" || protocol === "https:";
+  } catch {
+    return false;
+  }
+};
 
 const update = async (
   id: string,
@@ -208,6 +237,26 @@ const update = async (
   } = payload;
 
   const updateData: any = { ...restPayload };
+  if (payload.affiliateItem !== undefined && typeof payload.affiliateItem !== "boolean") {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Affiliate item must be true or false!");
+  }
+  if (
+    payload.affiliateLink !== undefined &&
+    payload.affiliateLink !== null &&
+    typeof payload.affiliateLink !== "string"
+  ) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Affiliate link must be a URL string!");
+  }
+  const affiliateItem = payload.affiliateItem ?? productExist.affiliateItem ?? false;
+  const affiliateLink = payload.affiliateLink !== undefined
+    ? payload.affiliateLink
+    : productExist.affiliateLink;
+
+  if (affiliateItem && !isHttpUrl(affiliateLink)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Affiliate products require a valid HTTP or HTTPS affiliate link!");
+  }
+  updateData.affiliateItem = affiliateItem;
+  updateData.affiliateLink = affiliateItem ? affiliateLink : null;
 
   // Step 1: Handle removeImages — filter out deleted images from the DB list
   if (payload.removeImages && Array.isArray(payload.removeImages) && payload.removeImages.length > 0) {
@@ -509,6 +558,8 @@ const getAll = async (req) => {
       discountPercent: true,
       stock: true,
       quantity: true,
+      affiliateItem: true,
+      affiliateLink: true,
       createdAt: true,
       updatedAt: true,
       category: {
@@ -680,6 +731,8 @@ const getAllByAdmin = async (req) => {
       discountPercent: true,
       stock: true,
       quantity: true,
+      affiliateItem: true,
+      affiliateLink: true,
       createdAt: true,
       updatedAt: true,
       category: {
@@ -1000,6 +1053,8 @@ const getBestSell = async (req: any) => {
       discountPercent: true,
       stock: true,
       quantity: true,
+      affiliateItem: true,
+      affiliateLink: true,
       createdAt: true,
       updatedAt: true,
       category: {
@@ -1081,6 +1136,8 @@ const getOnSale = async (req: any) => {
       discountPercent: true,
       stock: true,
       quantity: true,
+      affiliateItem: true,
+      affiliateLink: true,
       createdAt: true,
       updatedAt: true,
       category: {

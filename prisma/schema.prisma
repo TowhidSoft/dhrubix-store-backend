@@ -180,7 +180,6 @@ model Product {
   sku             String   @unique
   shortDes        String?
   des             String?
-  aff_link        String?
   specification   String?
   images          String[]
   videos          String[]
@@ -197,6 +196,9 @@ model Product {
   shippingFee     String   @default("0")
   stock           Boolean  @default(true)
   quantity        String
+
+  affiliateItem   Boolean? @default(false)
+  affiliateLink   String?
 
   category    Category?    @relation(fields: [categoryId], references: [id])
   Subcategory Subcategory? @relation(fields: [subcategoryId], references: [id])

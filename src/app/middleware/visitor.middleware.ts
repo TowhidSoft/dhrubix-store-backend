@@ -1,6 +1,6 @@
 // middleware/visitor.middleware.ts
 import { Request, Response, NextFunction } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
 import { VisitorService } from '../modules/visitor/visitor.service';
 
 export const autoTrackVisitor = async (req: Request, res: Response, next: NextFunction) => {
@@ -17,7 +17,7 @@ export const autoTrackVisitor = async (req: Request, res: Response, next: NextFu
     let sessionId = req.cookies?.visitorSessionId;
 
     if (!sessionId) {
-      sessionId = uuidv4();
+      sessionId = randomUUID();
       // Set cookie for 30 days
       res.cookie('visitorSessionId', sessionId, {
         maxAge: 30 * 24 * 60 * 60 * 1000,

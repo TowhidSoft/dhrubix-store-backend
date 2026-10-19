@@ -5,7 +5,10 @@ const validateRequest =
 	(schema: ZodObject | ZodTypeAny) =>
 		async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 			try {
-				await schema.safeParse(req.body);
+				const result = await schema.safeParse(req.body);
+				if (!result.success) {
+					return next(result.error);
+				}
 				return next();
 			} catch (error) {
 				next(error);
