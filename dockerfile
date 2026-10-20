@@ -4,10 +4,10 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # Install all dependencies (including dev dependencies needed for building)
-RUN npm ci
+RUN npm install
 
 # Copy Prisma schema and generate client (if using Prisma)
 COPY prisma ./prisma
